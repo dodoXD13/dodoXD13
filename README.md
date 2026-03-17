@@ -9,4 +9,5 @@ local v0=game:GetService("ReplicatedStorage"):WaitForChild("RE");local v1="ScRiP
          \/          \/         \/    \/                \/     \/     \/                   
           \_Welcome to LuaObfuscator.com   (Alpha 0.10.9) ~  Much Love, Ferib 
 
-]]--
+]]-- 
+--0bfu5c4t3t
