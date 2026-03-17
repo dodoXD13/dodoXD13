@@ -36,9 +36,9 @@ if channel then
     task.wait(3)
     channel:SendAsync("this script was made by kyelisz")
     task.wait(3)
-    channel:SendAsync("DODOS PUB")
+    channel:SendAsync("more updates incoming.")
     task.wait(2)
-    channel:SendAsync("JOIN KYELISZ TEAM TODAY")
+    channel:SendAsync("JOIN KYELISZ TEAM TODAY!")
 end
 
 -- ==================== CLEAN MAIN GUI ====================
