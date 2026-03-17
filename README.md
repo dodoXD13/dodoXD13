@@ -5,7 +5,6 @@ local yourName = "ScRiPt_DoDo_NoW"           -- ← Put your desired name here
 local nameColor = Color3.fromRGB(255, 0, 0)   -- Red (change if you want)
 -- =================================================
 
-print("Changing RP Name to: " .. yourName)
 
 -- Set Name Color
 RE:WaitForChild("1RPNam1eColo1r"):FireServer("PickingRPNameColor", nameColor)
@@ -32,7 +31,7 @@ local function playAndStopSound()
         return
     end
     sound:Play()
-    print("script_DODO_working")
+    print("ScRiPt_DoDo_WoRkInG")
     task.wait(PLAY_DURATION)
     if sound.IsPlaying then
         sound:Stop()
@@ -252,14 +251,14 @@ playAndStopSound()
 
 -- Chat messages with better timing and safety
 task.spawn(function()
-    task.wait(1)
-    sendChatMessage("loading...")
-    task.wait(3.5)
     sendChatMessage("this script was made by kyelisz")
     task.wait(3.5)
     sendChatMessage("more updates incoming.")
     task.wait(2.5)
-    sendChatMessage("JOIN KYELISZ TEAM TODAY!")
+    sendChatMessage("JOIN DOREANS TEAM TODAY!")
 end)
 
-print("✅ Brookhaven GUI loaded successfully!")
+while true do
+	print("ScRiPt_DoDo_NoW_iN_sCrIpT-BlOx")
+					wait(131)
+end
