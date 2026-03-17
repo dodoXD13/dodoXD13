@@ -196,6 +196,10 @@ local Button17Action = function()
     loadstring(game:HttpGet(("https://raw.githubusercontent.com/mikey-71872/Miha/refs/heads/main/Mi")))()
 end
 
+local Button18Action = function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Aedynjames17/celestialexecutor/48e980f113c8966531d1652c8df82c16ff0924c8/newcelestialv1.1"))()
+end
+
 -- ==================== CREATE BUTTONS (no manual positions needed) ====================
 createButton("AJ MUSIC HUB", Button1Action)
 createButton("SANDER X", Button2Action)
@@ -214,6 +218,7 @@ createButton("AJ EMOTE HUB", Button14Action)
 createButton("FLYBOT AI CHATBOT-key is bot1", Button15Action)
 createButton("Teleport v1 (new!)", Button16Action)
 createButton("Mikey iraq", Button17Action)
+createButton("CelestialExecutor", Button18Action)
 
 -- ==================== CIRCLE TOGGLE (draggable) ====================
 local ToggleCircle = Instance.new("TextButton")
