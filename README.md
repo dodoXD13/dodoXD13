@@ -1,8 +1,19 @@
---[[ 
-    Brookhaven GUI - Cleaned & Fixed by Grok
-    Original made by kyelisz • Improved version
-    Use at your own risk!
-]]
+local RE = game:GetService("ReplicatedStorage"):WaitForChild("RE")
+
+-- ================== CHANGE THESE ==================
+local yourName = "ScRiPt_DoDo_NoW"           -- ← Put your desired name here
+local nameColor = Color3.fromRGB(255, 0, 0)   -- Red (change if you want)
+-- =================================================
+
+print("Changing RP Name to: " .. yourName)
+
+-- Set Name Color
+RE:WaitForChild("1RPNam1eColo1r"):FireServer("PickingRPNameColor", nameColor)
+
+task.wait(1)
+
+-- Set the actual RP Name
+RE:WaitForChild("1RPNam1eTex1t"):FireServer("RolePlayName", yourName)
 
 -- ==================== CONFIG ====================
 local SOUND_ID = "rbxassetid://17594884733"
