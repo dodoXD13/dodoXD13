@@ -192,6 +192,10 @@ local Button16Action = function()
     print("COMING VERY SOON")
 end
 
+local Button17Action = function()
+    print("COMING VERY SOON")
+end
+
 -- ==================== CREATE BUTTONS (no manual positions needed) ====================
 createButton("AJ MUSIC HUB", Button1Action)
 createButton("SANDER X", Button2Action)
@@ -209,6 +213,7 @@ createButton("AJ SPAMMER", Button13Action)
 createButton("AJ EMOTE HUB", Button14Action)
 createButton("FLYBOT AI CHATBOT-key is bot1", Button15Action)
 createButton("COMING SOON", Button16Action)
+createButton("COMING SOON", Button17Action)
 
 -- ==================== CIRCLE TOGGLE (draggable) ====================
 local ToggleCircle = Instance.new("TextButton")
