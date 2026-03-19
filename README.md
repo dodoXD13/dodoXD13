@@ -183,6 +183,8 @@ local Button19Action = function() safeLoad("https://raw.githubusercontent.com/in
 local Button20Action = function() safeLoad("https://raw.githubusercontent.com/KJASSH/REFS/main/ZAGANG") end
 local Button21Action = function() safeLoad("https://raw.githubusercontent.com/mighuelfreitas40-sys/Brookhaven/refs/heads/main/Brookhaven") end
 local Button22Action = function() safeLoad("https://raw.githubusercontent.com/as6cd0/SP_Hub/refs/heads/main/Brookhaven") end
+local Button23Action = function() safeLoad("https://raw.githubusercontent.com/dodoXD13/ghoster-hub-v1/refs/heads/main/README.md") end
+
 
 -- ==================== CREATE BUTTONS ====================
 createButton("AJ MUSIC HUB", Button1Action)
@@ -207,6 +209,7 @@ createButton("Dex Explorer", Button19Action)
 createButton("Zagnz X", Button20Action)
 createButton("NovoAprendiz", Button21Action)
 createButton("SP Hub 1.5v", Button22Action)
+createButton("GHOSTER HUB V1", Button23Action)
 
 -- ==================== CIRCLE TOGGLE ====================
 local ToggleCircle = Instance.new("TextButton")
