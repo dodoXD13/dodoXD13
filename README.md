@@ -232,7 +232,7 @@ local Button38Action = function() safeLoad("https://raw.githubusercontent.com/Ug
 local Button39Action = function() safeLoad("https://raw.githubusercontent.com/tanwen-sys/Rafexv2/refs/heads/main/obfuscated_script-1773439704365.lua.txt") end
 local Button40Action = function() safeLoad("https://raw.githubusercontent.com/neymar2929/Neymar/refs/heads/main/soon.lua") end
 local Button41Action = function() safeLoad("https://raw.githubusercontent.com/neymar2929/New/refs/heads/main/New.lua") end
-local Button42Action = function() safeLoad("print("you pressed me :3") end
+local Button42Action = function() safeLoad("") end
 
 
 -- ==================== CREATE BUTTONS ====================
