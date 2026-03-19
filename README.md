@@ -222,7 +222,7 @@ local Button28Action = function() safeLoad("https://raw.githubusercontent.com/Fr
 local Button29Action = function() safeLoad("https://raw.githubusercontent.com/nobody11mrm-ship-it/Xvip1/refs/heads/main/XpolitX.lua") end
 local Button30Action = function() safeLoad("https://raw.githubusercontent.com/bruton-lua-sources/Fe/refs/heads/main/FeHug") end
 local Button31Action = function() safeLoad("https://pastebin.com/raw/zLspNekY") end
-local Button32Action = function() safeLoad("") end
+local Button32Action = function() safeLoad("https://pastebin.com/raw/MDAU3hXp") end
 
 -- ==================== CREATE BUTTONS ====================
 createButton("DoDoS Chat (NEW)", Button1Action)
@@ -256,7 +256,7 @@ createButton("FEK Hub", Button28Action)
 createButton("Xploit Hub", Button29Action)
 createButton("Bruton FE HUG", Button30Action)
 createButton("AJ MUSIC HUB", Button31Action)
-createButton("IMMA FIND MORE HUBS.", Button32Action)
+createButton("AV8 v2.3", Button32Action)
 
 -- ==================== TOGGLE ====================
 local ToggleCircle = Instance.new("TextButton")
