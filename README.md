@@ -187,7 +187,7 @@ local function safeLoad(url)
 end
 
 -- ==================== BUTTON ACTIONS ====================
-local Button1Action  = function() safeLoad("https://pastebin.com/raw/zLspNekY") end
+local Button1Action  = function() safeLoad("") end
 local Button2Action  = function() safeLoad('https://raw.githubusercontent.com/kigredns/SanderXV4.2.2/refs/heads/main/New.lua') end
 local Button3Action  = function() 
     local v0=string.char;local v1=string.byte;local v2=string.sub;local v3=bit32;local v4=v3.bxor;local v5=table.concat;local v6=table.insert;
@@ -221,11 +221,11 @@ local Button27Action = function() safeLoad("https://raw.githubusercontent.com/dr
 local Button28Action = function() safeLoad("https://raw.githubusercontent.com/Front-Evill/Script-Hub/refs/heads/main/GUI/gui.brookhavan.lua") end
 local Button29Action = function() safeLoad("https://raw.githubusercontent.com/nobody11mrm-ship-it/Xvip1/refs/heads/main/XpolitX.lua") end
 local Button30Action = function() safeLoad("https://raw.githubusercontent.com/bruton-lua-sources/Fe/refs/heads/main/FeHug") end
-local Button31Action = function() safeLoad("") end
+local Button31Action = function() safeLoad("https://pastebin.com/raw/zLspNekY") end
 local Button32Action = function() safeLoad("") end
 
 -- ==================== CREATE BUTTONS ====================
-createButton("AJ MUSIC HUB", Button1Action)
+createButton("DoDoS Chat (NEW)", Button1Action)
 createButton("SANDER X", Button2Action)
 createButton("takito hub", Button3Action)
 createButton("nytherune hub", Button4Action)
@@ -255,7 +255,7 @@ createButton("Hyronis Hub", Button27Action)
 createButton("FEK Hub", Button28Action)
 createButton("Xploit Hub", Button29Action)
 createButton("Bruton FE HUG", Button30Action)
-createButton("COMING SOON", Button31Action)
+createButton("AJ MUSIC HUB", Button31Action)
 createButton("IMMA FIND MORE HUBS.", Button32Action)
 
 -- ==================== TOGGLE ====================
