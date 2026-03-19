@@ -226,7 +226,7 @@ local Button32Action = function() safeLoad("https://pastebin.com/raw/MDAU3hXp") 
 local Button33Action = function() safeLoad("https://raw.githubusercontent.com/90ve/RaVe/refs/heads/main/Ver.lua") end
 local Button34Action = function() safeLoad("https://raw.githubusercontent.com/Cat558-uz/All-rights-reserved-to-packj0/main/hub%20Brook") end
 local Button35Action = function() safeLoad("https://pastebin.com/raw/EYs5T7Yg))()") end
-local Button36Action = function() safeLoad("") end
+local Button36Action = function() safeLoad("https://raw.githubusercontent.com/Hm5011/hussain/refs/heads/main/Mercy%20Script") end
 local Button37Action = function() safeLoad("") end
 local Button38Action = function() safeLoad("") end
 local Button39Action = function() safeLoad("") end
@@ -268,7 +268,7 @@ createButton("AV8 v2.3", Button32Action)
 createButton("9VER IRAQ", Button33Action)
 createButton("REDZ HUB", Button34Action)
 createButton("Real Hub", Button35Action)
-createButton("", Button36Action)
+createButton("VR7", Button36Action)
 createButton("", Button37Action)
 createButton("", Button38Action)
 createButton("", Button39Action)
