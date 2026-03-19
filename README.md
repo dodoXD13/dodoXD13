@@ -229,8 +229,11 @@ local Button35Action = function() safeLoad("https://pastebin.com/raw/EYs5T7Yg))(
 local Button36Action = function() safeLoad("https://raw.githubusercontent.com/Hm5011/hussain/refs/heads/main/Mercy%20Script") end
 local Button37Action = function() safeLoad("https://raw.githubusercontent.com/DEMOzHUB/DEMOzHUB/refs/heads/main/DEMOzHU") end
 local Button38Action = function() safeLoad("https://raw.githubusercontent.com/UgiX1/JOAOHUB/refs/heads/main/JOAOHUB.txt") end
-local Button39Action = function() safeLoad("") end
-local Button40Action = function() safeLoad("") end
+local Button39Action = function() safeLoad("https://raw.githubusercontent.com/tanwen-sys/Rafexv2/refs/heads/main/obfuscated_script-1773439704365.lua.txt") end
+local Button40Action = function() safeLoad("https://raw.githubusercontent.com/neymar2929/Neymar/refs/heads/main/soon.lua") end
+local Button41Action = function() safeLoad("https://raw.githubusercontent.com/neymar2929/New/refs/heads/main/New.lua") end
+local Button42Action = function() safeLoad("print("you pressed me :3") end
+
 
 -- ==================== CREATE BUTTONS ====================
 createButton("DoDoS Chat (NEW)", Button1Action)
@@ -271,8 +274,10 @@ createButton("Real Hub", Button35Action)
 createButton("VR7", Button36Action)
 createButton("demoZ hub", Button37Action)
 createButton("Joaoh Hub", Button38Action)
-createButton("", Button39Action)
-createButton("", Button40Action)
+createButton("RAVEX HUB V2", Button39Action)
+createButton("Kalefaa Hub", Button40Action)
+createButton("Neymar Hub", Button41Action)
+createButton("COMING SOON :D", Button42Action)
 
 
 -- ==================== TOGGLE ====================
