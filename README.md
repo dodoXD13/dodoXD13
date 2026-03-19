@@ -228,7 +228,7 @@ local Button34Action = function() safeLoad("https://raw.githubusercontent.com/Ca
 local Button35Action = function() safeLoad("https://pastebin.com/raw/EYs5T7Yg))()") end
 local Button36Action = function() safeLoad("https://raw.githubusercontent.com/Hm5011/hussain/refs/heads/main/Mercy%20Script") end
 local Button37Action = function() safeLoad("https://raw.githubusercontent.com/DEMOzHUB/DEMOzHUB/refs/heads/main/DEMOzHU") end
-local Button38Action = function() safeLoad("") end
+local Button38Action = function() safeLoad("https://raw.githubusercontent.com/UgiX1/JOAOHUB/refs/heads/main/JOAOHUB.txt") end
 local Button39Action = function() safeLoad("") end
 local Button40Action = function() safeLoad("") end
 
@@ -270,7 +270,7 @@ createButton("REDZ HUB", Button34Action)
 createButton("Real Hub", Button35Action)
 createButton("VR7", Button36Action)
 createButton("demoZ hub", Button37Action)
-createButton("", Button38Action)
+createButton("Joaoh Hub", Button38Action)
 createButton("", Button39Action)
 createButton("", Button40Action)
 
