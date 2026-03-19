@@ -184,6 +184,15 @@ local Button20Action = function() safeLoad("https://raw.githubusercontent.com/KJ
 local Button21Action = function() safeLoad("https://raw.githubusercontent.com/mighuelfreitas40-sys/Brookhaven/refs/heads/main/Brookhaven") end
 local Button22Action = function() safeLoad("https://raw.githubusercontent.com/as6cd0/SP_Hub/refs/heads/main/Brookhaven") end
 local Button23Action = function() safeLoad("https://raw.githubusercontent.com/dodoXD13/ghoster-hub-v1/refs/heads/main/README.md") end
+local Button24Action = function() safeLoad("https://pastefy.app/BN6PEYM9/raw") end
+local Button25Action = function() safeLoad("https://raw.githubusercontent.com/Lx8Lx/UgiXclothes/refs/heads/main/UgiXCTH.txt") end
+local Button26Action = function() safeLoad("https://raw.githubusercontent.com/vpn256559/Ravex-/refs/heads/main/obfuscated_script-1773439704365.lua.txt") end
+local Button27Action = function() safeLoad("https://raw.githubusercontent.com/dreamy9x9x/ScriptsVazados/refs/heads/main/Zyronis%20Hub%20-%20by%20Bazuka.txt") end
+local Button28Action = function() safeLoad("https://raw.githubusercontent.com/Front-Evill/Script-Hub/refs/heads/main/GUI/gui.brookhavan.lua") end
+local Button29Action = function() safeLoad("https://raw.githubusercontent.com/nobody11mrm-ship-it/Xvip1/refs/heads/main/XpolitX.lua") end
+local Button30Action = function() safeLoad("https://raw.githubusercontent.com/bruton-lua-sources/Fe/refs/heads/main/FeHug") end
+local Button31Action = function() safeLoad("") end
+local Button32Action = function() safeLoad("") end
 
 
 -- ==================== CREATE BUTTONS ====================
@@ -210,6 +219,15 @@ createButton("Zagnz X", Button20Action)
 createButton("NovoAprendiz", Button21Action)
 createButton("SP Hub 1.5v", Button22Action)
 createButton("GHOSTER HUB V1", Button23Action)
+createButton("KAKAH HUB", Button24Action)
+createButton("Ugix clothes", Button25Action)
+createButton("Ravex Hub", Button26Action)
+createButton("Hyronis Hub", Button27Action)
+createButton("FEK Hub", Button28Action)
+createButton("Xploit Hub", Button29Action)
+createButton("Bruton FE HUG", Button30Action)
+createButton("COMING SOON", Button31Action)
+createButton("IMMA FIND MORE HUBS.", Button32Action)
 
 -- ==================== CIRCLE TOGGLE ====================
 local ToggleCircle = Instance.new("TextButton")
@@ -253,18 +271,7 @@ playAndStopSound()
 
 task.spawn(function()
     task.wait(1)
-    sendChatMessage("loading...")
-    task.wait(3.5)
+    sendChatMessage("thanks for using my script")
+    task.wait(1)
     sendChatMessage("this script was made by kyelisz")
-    task.wait(3.5)
-    sendChatMessage("more updates incoming.")
-    task.wait(2.5)
-    sendChatMessage("JOIN KYELISZ TEAM TODAY!")
-end)
-
-task.spawn(function()
-    while true do
-        print("UsEr_UsInG_ScRiPt_DoDo")
-        task.wait(30)
-    end
 end)
