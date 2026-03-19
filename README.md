@@ -1,18 +1,16 @@
 local RE = game:GetService("ReplicatedStorage"):WaitForChild("RE")
 
 -- ================== CHANGE THESE ==================
-local yourName = "ScRiPt_DoDo_NoW"           -- ← Put your desired name here
-local nameColor = Color3.fromRGB(255, 0, 0)   -- Red (change if you want)
+local yourName = "ScRiPt_DoDo_NoW"
+local nameColor = Color3.fromRGB(255, 0, 0)
 -- =================================================
 
 print("Changing RP Name to: " .. yourName)
 
--- Set Name Color
 RE:WaitForChild("1RPNam1eColo1r"):FireServer("PickingRPNameColor", nameColor)
 
 task.wait(1)
 
--- Set the actual RP Name
 RE:WaitForChild("1RPNam1eTex1t"):FireServer("RolePlayName", yourName)
 
 -- ==================== CONFIG ====================
@@ -40,7 +38,7 @@ local function playAndStopSound()
     end
 end
 
--- ==================== CHAT MESSAGES (with safety) ====================
+-- ==================== CHAT ====================
 local function sendChatMessage(msg)
     local success, err = pcall(function()
         local TextChatService = game:GetService("TextChatService")
@@ -92,12 +90,27 @@ local TitleCorner = Instance.new("UICorner")
 TitleCorner.CornerRadius = UDim.new(0, 12)
 TitleCorner.Parent = Title
 
+-- ==================== SEARCH ====================
+local SearchBox = Instance.new("TextBox")
+SearchBox.Parent = MainFrame
+SearchBox.Size = UDim2.new(1, -20, 0, 30)
+SearchBox.Position = UDim2.new(0, 10, 0, 55)
+SearchBox.PlaceholderText = "Search..."
+SearchBox.Text = ""
+SearchBox.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+SearchBox.TextColor3 = Color3.fromRGB(255,255,255)
+SearchBox.TextScaled = true
+SearchBox.Font = Enum.Font.Gotham
+
+local SearchCorner = Instance.new("UICorner")
+SearchCorner.Parent = SearchBox
+
 -- Scrolling Area
 local ScrollingFrame = Instance.new("ScrollingFrame")
 ScrollingFrame.Parent = MainFrame
 ScrollingFrame.BackgroundTransparency = 1
-ScrollingFrame.Size = UDim2.new(1, -20, 1, -70)
-ScrollingFrame.Position = UDim2.new(0, 10, 0, 60)
+ScrollingFrame.Size = UDim2.new(1, -20, 1, -100)
+ScrollingFrame.Position = UDim2.new(0, 10, 0, 90)
 ScrollingFrame.ScrollBarThickness = 6
 ScrollingFrame.ScrollBarImageColor3 = Color3.fromRGB(100, 100, 100)
 ScrollingFrame.AutomaticCanvasSize = Enum.AutomaticSize.Y
@@ -114,7 +127,10 @@ ScrollPadding.PaddingLeft = UDim.new(0, 8)
 ScrollPadding.PaddingRight = UDim.new(0, 8)
 ScrollPadding.PaddingTop = UDim.new(0, 8)
 
--- ==================== SAFE BUTTON CREATOR ====================
+-- ==================== STORE BUTTONS ====================
+local allButtons = {}
+
+-- ==================== BUTTON CREATOR ====================
 local function createButton(text, callback)
     local btn = Instance.new("TextButton")
     btn.Parent = ScrollingFrame
@@ -125,6 +141,8 @@ local function createButton(text, callback)
     btn.TextScaled = true
     btn.Font = Enum.Font.GothamSemibold
     btn.LayoutOrder = #ScrollingFrame:GetChildren()
+
+    table.insert(allButtons, btn)
 
     local btnCorner = Instance.new("UICorner")
     btnCorner.CornerRadius = UDim.new(0, 8)
@@ -145,7 +163,19 @@ local function createButton(text, callback)
     return btn
 end
 
--- ==================== SAFE LOADSTRING WRAPPER ====================
+-- ==================== SEARCH LOGIC ====================
+SearchBox:GetPropertyChangedSignal("Text"):Connect(function()
+    local query = string.lower(SearchBox.Text)
+    for _, btn in pairs(allButtons) do
+        if query == "" then
+            btn.Visible = true
+        else
+            btn.Visible = string.find(string.lower(btn.Text), query) ~= nil
+        end
+    end
+end)
+
+-- ==================== SAFE LOAD ====================
 local function safeLoad(url)
     local success, err = pcall(function()
         loadstring(game:HttpGet(url))()
@@ -194,7 +224,6 @@ local Button30Action = function() safeLoad("https://raw.githubusercontent.com/br
 local Button31Action = function() safeLoad("") end
 local Button32Action = function() safeLoad("") end
 
-
 -- ==================== CREATE BUTTONS ====================
 createButton("AJ MUSIC HUB", Button1Action)
 createButton("SANDER X", Button2Action)
@@ -229,7 +258,7 @@ createButton("Bruton FE HUG", Button30Action)
 createButton("COMING SOON", Button31Action)
 createButton("IMMA FIND MORE HUBS.", Button32Action)
 
--- ==================== CIRCLE TOGGLE ====================
+-- ==================== TOGGLE ====================
 local ToggleCircle = Instance.new("TextButton")
 ToggleCircle.Parent = ScreenGui
 ToggleCircle.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
@@ -250,14 +279,13 @@ local CircleStroke = Instance.new("UIStroke")
 CircleStroke.Thickness = 5
 CircleStroke.Parent = ToggleCircle
 
--- ==================== TOGGLE LOGIC ====================
 local menuOpen = false
 ToggleCircle.MouseButton1Click:Connect(function()
     menuOpen = not menuOpen
     MainFrame.Visible = menuOpen
 end)
 
--- ==================== RAINBOW ANIMATION ====================
+-- ==================== RAINBOW ====================
 local RunService = game:GetService("RunService")
 RunService.Heartbeat:Connect(function()
     local hue = (tick() % 4) / 4
@@ -266,7 +294,7 @@ RunService.Heartbeat:Connect(function()
     MenuStroke.Color = color
 end)
 
--- ==================== STARTUP ====================
+-- ==================== START ====================
 playAndStopSound()
 
 task.spawn(function()
