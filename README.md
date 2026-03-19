@@ -294,7 +294,57 @@ RunService.Heartbeat:Connect(function()
     MenuStroke.Color = color
 end)
 
--- ==================== START ====================
+-- ==================== SECRET COMBO ====================
+local UIS = game:GetService("UserInputService")
+
+local keys = {
+    One = false,
+    Three = false,
+    D = false
+}
+
+UIS.InputBegan:Connect(function(input, gp)
+    if gp then return end
+
+    if input.KeyCode == Enum.KeyCode.One then
+        keys.One = true
+    elseif input.KeyCode == Enum.KeyCode.Three then
+        keys.Three = true
+    elseif input.KeyCode == Enum.KeyCode.D then
+        keys.D = true
+    end
+
+    if keys.One and keys.Three and keys.D then
+        local popup = Instance.new("TextLabel")
+        popup.Parent = ScreenGui
+        popup.Size = UDim2.new(0, 300, 0, 100)
+        popup.Position = UDim2.new(0.5, -150, 0.5, -50)
+        popup.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+        popup.TextColor3 = Color3.fromRGB(255, 255, 255)
+        popup.TextScaled = true
+        popup.Font = Enum.Font.GothamBold
+        popup.Text = "fuck all 0f you who are gonna steal my shit. btw if you found this secret youre lucky!" -- your custom text
+
+        local corner = Instance.new("UICorner")
+        corner.Parent = popup
+
+        task.delay(3, function()
+            popup:Destroy()
+        end)
+    end
+end)
+
+UIS.InputEnded:Connect(function(input)
+    if input.KeyCode == Enum.KeyCode.One then
+        keys.One = false
+    elseif input.KeyCode == Enum.KeyCode.Three then
+        keys.Three = false
+    elseif input.KeyCode == Enum.KeyCode.D then
+        keys.D = false
+    end
+end)
+
+-- ==================== STARTUP ====================
 playAndStopSound()
 
 task.spawn(function()
