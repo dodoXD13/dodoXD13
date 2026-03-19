@@ -223,9 +223,9 @@ local Button29Action = function() safeLoad("https://raw.githubusercontent.com/no
 local Button30Action = function() safeLoad("https://raw.githubusercontent.com/bruton-lua-sources/Fe/refs/heads/main/FeHug") end
 local Button31Action = function() safeLoad("https://pastebin.com/raw/zLspNekY") end
 local Button32Action = function() safeLoad("https://pastebin.com/raw/MDAU3hXp") end
-local Button33Action = function() safeLoad("") end
-local Button34Action = function() safeLoad("") end
-local Button35Action = function() safeLoad("") end
+local Button33Action = function() safeLoad("https://raw.githubusercontent.com/90ve/RaVe/refs/heads/main/Ver.lua") end
+local Button34Action = function() safeLoad("https://raw.githubusercontent.com/Cat558-uz/All-rights-reserved-to-packj0/main/hub%20Brook") end
+local Button35Action = function() safeLoad("https://pastebin.com/raw/EYs5T7Yg))()") end
 local Button36Action = function() safeLoad("") end
 local Button37Action = function() safeLoad("") end
 local Button38Action = function() safeLoad("") end
@@ -265,9 +265,9 @@ createButton("Xploit Hub", Button29Action)
 createButton("Bruton FE HUG", Button30Action)
 createButton("AJ MUSIC HUB", Button31Action)
 createButton("AV8 v2.3", Button32Action)
-createButton("", Button33Action)
-createButton("", Button34Action)
-createButton("", Button35Action)
+createButton("9VER IRAQ", Button33Action)
+createButton("REDZ HUB", Button34Action)
+createButton("Real Hub", Button35Action)
 createButton("", Button36Action)
 createButton("", Button37Action)
 createButton("", Button38Action)
