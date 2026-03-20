@@ -624,7 +624,7 @@ addUpdate("Why are people sending theyr friggin keys here?")
 addUpdate("FREE_dd70ff3dff72fe1e7158545b4a6636e1")
 addUpdate("more updates incoming. imma be adding 1 comment to this")
 addUpdate("update pannel maybe everyday.(i have other things to do too)")
-addUpdate("someone actualy sayd idk liek why you typing then🤤😨")
+addUpdate("no saying hi daddy i was supposed to get more hubs man")
 -- Close Button (bigger & cooler)
 local closeButton = Instance.new("TextButton")
 closeButton.Size = UDim2.new(0, 140, 0, 50)
@@ -721,3 +721,4 @@ game:GetService("UserInputService").InputChanged:Connect(function(input)
         TweenService:Create(frame, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), goal):Play()
     end
 end)
+
