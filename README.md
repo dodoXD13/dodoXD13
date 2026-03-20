@@ -367,11 +367,23 @@ UIS.InputEnded:Connect(function(input)
 end)
 
 -- ==================== STARTUP ====================
-playAndStopSound()
+local StarterGui = game:GetService("StarterGui")
 
-task.spawn(function()
-    task.wait(1)
-    sendChatMessage("thanks for using my script")
-    task.wait(1)
-    sendChatMessage("this script was made by kyelisz")
-end)
+local function notify(title, text, icon, duration)
+    pcall(function()
+        StarterGui:SetCore("SendNotification", {
+            Title = title,
+            Text = text,
+            Icon = icon,
+            Duration = duration or 5
+        })
+    end)
+end
+
+-- Try with your image
+notify(
+    "script made by kyelisz",
+    "more updates coming soon.",
+    "rbxassetid://6547771002",
+    5
+)
