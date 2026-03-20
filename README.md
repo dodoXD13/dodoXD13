@@ -233,6 +233,14 @@ local Button39Action = function() safeLoad("https://raw.githubusercontent.com/ta
 local Button40Action = function() safeLoad("https://raw.githubusercontent.com/neymar2929/Neymar/refs/heads/main/soon.lua") end
 local Button41Action = function() safeLoad("https://raw.githubusercontent.com/neymar2929/New/refs/heads/main/New.lua") end
 local Button42Action = function() safeLoad("https://raw.githubusercontent.com/dodoXD13/discord-copy-channel/refs/heads/main/README.md?token=GHSAT0AAAAAADXN6LP4AQU7UBOKZNCMHDCU2N5OXVA") end
+local Button43Action = function() safeLoad("https://raw.githubusercontent.com/fhrdimybds-byte/OP-FLY-GUI-/refs/heads/main/Lua") end
+local Button44Action = function() safeLoad("") end
+local Button45Action = function() safeLoad("") end
+local Button46Action = function() safeLoad("") end
+local Button47Action = function() safeLoad("") end
+local Button48Action = function() safeLoad("") end
+local Button49Action = function() safeLoad("") end
+local Button50Action = function() safeLoad("") end
 
 
 -- ==================== CREATE BUTTONS ====================
@@ -278,6 +286,14 @@ createButton("RAVEX HUB V2", Button39Action)
 createButton("Kalefaa Hub", Button40Action)
 createButton("Neymar Hub", Button41Action)
 createButton("(NEW) COPY DISCORD CHANNEL :3", Button42Action)
+createButton("op fly gui", Button43Action)
+createButton("ghost hub", Button44Action)
+createButton("", Button45Action)
+createButton("", Button46Action)
+createButton("", Button47Action)
+createButton("", Button48Action)
+createButton("", Button49Action)
+createButton("", Button50Action)
 
 
 -- ==================== TOGGLE ====================
@@ -467,7 +483,7 @@ end)
 local TextBox = Instance.new("TextBox")
 TextBox.Size = UDim2.new(0, 320, 0, 60)
 TextBox.Position = UDim2.new(0, 15, 0, 50)
-TextBox.PlaceholderText = "reccomend a hub to me by typing here and sending"
+TextBox.PlaceholderText = "recommend a hub to me by typing here and sending (LOADSTRINGS ARE NOT ALLOWED)"
 TextBox.ClearTextOnFocus = true
 TextBox.Text = ""
 TextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
