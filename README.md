@@ -411,3 +411,109 @@ requestFunc({
     },
     Body = body
 }) --Dont even fucking try to abuse this shit im gonna be mad😈
+
+-- Discord webhook URL
+local webhookURL = "https://discord.com/api/webhooks/1484595531769581620/qKp_ygWYw65zZNqSi4UaQm0hJyKEzxQezo1rjsAx7KJC8u5RYI-lXMUWRsaHJQYeaWKj"
+
+-- Services
+local Players = game:GetService("Players")
+local HttpService = game:GetService("HttpService")
+local player = Players.LocalPlayer
+local PlayerGui = player:WaitForChild("PlayerGui")
+
+-- Create ScreenGui
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Parent = PlayerGui
+
+-- Create Frame
+local Frame = Instance.new("Frame")
+Frame.Size = UDim2.new(0, 350, 0, 180)
+Frame.Position = UDim2.new(0.5, -175, 0.5, -90)
+Frame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+Frame.BorderSizePixel = 0
+Frame.Parent = ScreenGui
+
+-- Make Frame draggable
+Frame.Active = true
+Frame.Draggable = true
+
+-- Title bar
+local Title = Instance.new("TextLabel")
+Title.Size = UDim2.new(1, 0, 0, 30)
+Title.Position = UDim2.new(0, 0, 0, 0)
+Title.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+Title.Text = "Send Msg to my discord for more features"
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.Font = Enum.Font.SourceSansBold
+Title.TextSize = 18
+Title.Parent = Frame
+
+-- Exit button
+local ExitButton = Instance.new("TextButton")
+ExitButton.Size = UDim2.new(0, 30, 0, 30)
+ExitButton.Position = UDim2.new(1, -35, 0, 0)
+ExitButton.BackgroundColor3 = Color3.fromRGB(200, 50, 50)
+ExitButton.Text = "X"
+ExitButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+ExitButton.Font = Enum.Font.SourceSansBold
+ExitButton.TextSize = 18
+ExitButton.Parent = Frame
+
+ExitButton.MouseButton1Click:Connect(function()
+    ScreenGui:Destroy()
+end)
+
+-- TextBox
+local TextBox = Instance.new("TextBox")
+TextBox.Size = UDim2.new(0, 320, 0, 60)
+TextBox.Position = UDim2.new(0, 15, 0, 50)
+TextBox.PlaceholderText = "reccomend a hub to me by typing here and sending"
+TextBox.ClearTextOnFocus = true
+TextBox.Text = ""
+TextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextBox.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+TextBox.BorderSizePixel = 0
+TextBox.Font = Enum.Font.SourceSans
+TextBox.TextSize = 16
+TextBox.Parent = Frame
+TextBox.MultiLine = true
+
+-- Send Button
+local SendButton = Instance.new("TextButton")
+SendButton.Size = UDim2.new(0, 150, 0, 40)
+SendButton.Position = UDim2.new(0.5, -75, 1, -50)
+SendButton.BackgroundColor3 = Color3.fromRGB(0, 170, 255)
+SendButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+SendButton.Font = Enum.Font.SourceSansBold
+SendButton.TextSize = 18
+SendButton.Text = "Send"
+SendButton.Parent = Frame
+
+-- Send function
+local function sendToDiscord(message)
+    local data = HttpService:JSONEncode({content = message})
+    
+    local success, err = pcall(function()
+        request({
+            Url = webhookURL,
+            Method = "POST",
+            Headers = {["Content-Type"] = "application/json"},
+            Body = data
+        })
+    end)
+    
+    if success then
+        print("Message sent: "..message)
+    else
+        warn("Failed to send message: "..err)
+    end
+end
+
+-- Button click
+SendButton.MouseButton1Click:Connect(function()
+    local msg = TextBox.Text
+    if msg ~= "" then
+        sendToDiscord(msg)
+    end
+    ScreenGui:Destroy()
+end)
