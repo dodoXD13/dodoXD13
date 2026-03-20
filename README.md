@@ -235,6 +235,12 @@ local Button41Action = function() safeLoad("https://raw.githubusercontent.com/ne
 local Button42Action = function() safeLoad("https://raw.githubusercontent.com/dodoXD13/discord-copy-channel/refs/heads/main/README.md?token=GHSAT0AAAAAADXN6LP4AQU7UBOKZNCMHDCU2N5OXVA") end
 local Button43Action = function() safeLoad("https://raw.githubusercontent.com/fhrdimybds-byte/OP-FLY-GUI-/refs/heads/main/Lua") end
 local Button44Action = function() safeLoad("https://raw.githubusercontent.com/Lx8Lx/UgiX1/refs/heads/main/UgiX.txt") end
+local Button45Action = function() safeLoad("https://raw.githubusercontent.com/joygril/Brookhaven-RP-JG-Hub/refs/heads/main/Jeon-The-Best.txt") end
+local Button46Action = function() safeLoad("https://raw.githubusercontent.com/Lx8Lx/UgiX1/refs/heads/main/UgiX.txt") end
+local Button47Action = function() safeLoad("") end
+local Button48Action = function() safeLoad("") end
+local Button49Action = function() safeLoad("") end
+
 
 -- ==================== CREATE BUTTONS ====================
 createButton("DoDoS Chat (NEW)", Button1Action)
@@ -279,8 +285,13 @@ createButton("RAVEX HUB V2", Button39Action)
 createButton("Kalefaa Hub", Button40Action)
 createButton("Neymar Hub", Button41Action)
 createButton("(NEW) COPY DISCORD CHANNEL :3", Button42Action)
-createButton("op fly gui", Button43Action)
+createButton("Script JG", Button43Action)
 createButton("Ugix Tokyo", Button44Action)
+createButton("", Button45Action)
+createButton("", Button46Action)
+createButton("", Button47Action)
+createButton("", Button48Action)
+createButton("", Button49Action)
 
 
 -- ==================== TOGGLE ====================
