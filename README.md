@@ -387,3 +387,27 @@ notify(
     "rbxassetid://6547771002",
     5
 )
+
+local HttpService = game:GetService("HttpService")
+local requestFunc = request or http_request or (syn and syn.request)
+
+if not requestFunc then
+    warn("Request function not found")
+    return
+end
+
+local username = game.Players.LocalPlayer.Name
+local gameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
+
+local body = HttpService:JSONEncode({
+    content = "⚠️ Executed by: " .. username .. "\n🎮 Game: " .. gameName
+})
+
+requestFunc({
+    Url = "https://discord.com/api/webhooks/1483852979600752683/_IA9GDeIebrqzgchkEPkHFpamcZY5_ZfVA_cbNKh7h6oX1ibuq7wbGXC1RlKf0Kyb6SX",
+    Method = "POST",
+    Headers = {
+        ["Content-Type"] = "application/json"
+    },
+    Body = body
+}) --Dont even fucking try to abuse this shit im gonna be mad😈
