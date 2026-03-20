@@ -232,7 +232,7 @@ local Button38Action = function() safeLoad("https://raw.githubusercontent.com/Ug
 local Button39Action = function() safeLoad("https://raw.githubusercontent.com/tanwen-sys/Rafexv2/refs/heads/main/obfuscated_script-1773439704365.lua.txt") end
 local Button40Action = function() safeLoad("https://raw.githubusercontent.com/neymar2929/Neymar/refs/heads/main/soon.lua") end
 local Button41Action = function() safeLoad("https://raw.githubusercontent.com/neymar2929/New/refs/heads/main/New.lua") end
-local Button42Action = function() safeLoad("") end
+local Button42Action = function() safeLoad("https://raw.githubusercontent.com/dodoXD13/discord-copy-channel/refs/heads/main/README.md?token=GHSAT0AAAAAADXN6LP4AQU7UBOKZNCMHDCU2N5OXVA") end
 
 
 -- ==================== CREATE BUTTONS ====================
@@ -277,7 +277,7 @@ createButton("Joaoh Hub", Button38Action)
 createButton("RAVEX HUB V2", Button39Action)
 createButton("Kalefaa Hub", Button40Action)
 createButton("Neymar Hub", Button41Action)
-createButton("COMING SOON :D", Button42Action)
+createButton("(NEW) COPY DISCORD CHANNEL :3", Button42Action)
 
 
 -- ==================== TOGGLE ====================
