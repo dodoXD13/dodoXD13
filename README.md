@@ -519,3 +519,205 @@ SendButton.MouseButton1Click:Connect(function()
     end
     ScreenGui:Destroy()
 end)
+
+
+
+
+local Players = game.Players
+local TweenService = game:GetService("TweenService")
+local RunService = game:GetService("RunService")
+local player = Players.LocalPlayer
+local playerGui = player:WaitForChild("PlayerGui")
+
+-- ScreenGui
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "UpdateGUI"
+screenGui.Parent = playerGui
+
+-- Main Frame (Ice Blue)
+local frame = Instance.new("Frame")
+frame.Size = UDim2.new(0, 450, 0, 350)
+frame.Position = UDim2.new(0.5, -225, 0.5, -175)
+frame.BackgroundColor3 = Color3.fromRGB(173, 216, 230) -- Ice Blue
+frame.BorderSizePixel = 0
+frame.Parent = screenGui
+
+-- Rounded corners
+local mainCorner = Instance.new("UICorner")
+mainCorner.CornerRadius = UDim.new(0, 20)
+mainCorner.Parent = frame
+
+-- Rainbow outline frames
+local thickness = 6
+local sides = {}
+
+local function createSide(size, position)
+    local side = Instance.new("Frame")
+    side.Size = size
+    side.Position = position
+    side.BackgroundColor3 = Color3.fromRGB(255,0,0)
+    side.BorderSizePixel = 0
+    side.Parent = frame
+
+    -- Rounded corners for outline
+    local corner = Instance.new("UICorner")
+    corner.CornerRadius = UDim.new(0, 20)
+    corner.Parent = side
+    return side
+end
+
+sides.top = createSide(UDim2.new(1,0,0,thickness), UDim2.new(0,0,0,0))
+sides.bottom = createSide(UDim2.new(1,0,0,thickness), UDim2.new(0,0,1,-thickness))
+sides.left = createSide(UDim2.new(0,thickness,1,0), UDim2.new(0,0,0,0))
+sides.right = createSide(UDim2.new(0,thickness,1,0), UDim2.new(1,-thickness,0,0))
+
+-- Title Label
+local title = Instance.new("TextLabel")
+title.Size = UDim2.new(1, -20, 0, 50)
+title.Position = UDim2.new(0, 10, 0, 10)
+title.BackgroundTransparency = 1
+title.TextColor3 = Color3.fromRGB(0,0,0)
+title.Text = "DoDoS Updates"
+title.Font = Enum.Font.GothamBold
+title.TextSize = 28
+title.TextXAlignment = Enum.TextXAlignment.Center
+title.Parent = frame
+
+-- ScrollingFrame for updates
+local scrollFrame = Instance.new("ScrollingFrame")
+scrollFrame.Size = UDim2.new(1, -20, 1, -100) -- space for title & button
+scrollFrame.Position = UDim2.new(0, 10, 0, 70)
+scrollFrame.BackgroundTransparency = 1
+scrollFrame.BorderSizePixel = 0
+scrollFrame.ScrollBarThickness = 8
+scrollFrame.CanvasSize = UDim2.new(0,0,0,0) -- dynamic
+scrollFrame.Parent = frame
+
+-- UIListLayout for scroll frame
+local listLayout = Instance.new("UIListLayout")
+listLayout.Padding = UDim.new(0,5)
+listLayout.SortOrder = Enum.SortOrder.LayoutOrder
+listLayout.Parent = scrollFrame
+
+-- Function to add an update message
+local function addUpdate(text)
+    local label = Instance.new("TextLabel")
+    label.Size = UDim2.new(1,0,0,0)
+    label.BackgroundTransparency = 1
+    label.TextWrapped = true
+    label.TextXAlignment = Enum.TextXAlignment.Left
+    label.TextYAlignment = Enum.TextYAlignment.Top
+    label.Text = text
+    label.TextColor3 = Color3.fromRGB(0,0,0)
+    label.Font = Enum.Font.SourceSans
+    label.TextSize = 20
+    label.Parent = scrollFrame
+    label:GetPropertyChangedSignal("TextBounds"):Connect(function()
+        label.Size = UDim2.new(1,0,0,label.TextBounds.Y)
+        scrollFrame.CanvasSize = UDim2.new(0,0,listLayout.AbsoluteContentSize.Y,0)
+    end)
+end
+
+-- Example updates
+addUpdate("OP FLY added")
+addUpdate("Why are people sending theyr friggin keys here?")
+addUpdate("FREE_dd70ff3dff72fe1e7158545b4a6636e1")
+addUpdate("more updates incoming. imma be adding 1 comment to this")
+addUpdate("update pannel maybe everyday.(i have other things to do too)")
+
+-- Close Button (bigger & cooler)
+local closeButton = Instance.new("TextButton")
+closeButton.Size = UDim2.new(0, 140, 0, 50)
+closeButton.Position = UDim2.new(1, -150, 1, -60)
+closeButton.BackgroundColor3 = Color3.fromRGB(200, 50, 50)
+closeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+closeButton.Text = "Close"
+closeButton.Font = Enum.Font.GothamBold
+closeButton.TextSize = 24
+closeButton.Parent = frame
+
+-- Hover effect for Close button
+closeButton.MouseEnter:Connect(function()
+    TweenService:Create(closeButton, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(255,80,80)}):Play()
+end)
+closeButton.MouseLeave:Connect(function()
+    TweenService:Create(closeButton, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {BackgroundColor3 = Color3.fromRGB(200,50,50)}):Play()
+end)
+
+-- Smooth closing function
+local function closeGUI()
+    local tweenInfo = TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.In)
+    local goal = {Position = UDim2.new(frame.Position.X.Scale, frame.Position.X.Offset, frame.Position.Y.Scale, frame.Position.Y.Offset + 500), BackgroundTransparency = 1}
+    local tween = TweenService:Create(frame, tweenInfo, goal)
+    
+    for _, side in pairs(sides) do
+        TweenService:Create(side, tweenInfo, {BackgroundTransparency = 1}):Play()
+    end
+    
+    tween:Play()
+    tween.Completed:Wait()
+    screenGui:Destroy()
+end
+
+closeButton.MouseButton1Click:Connect(closeGUI)
+
+-- Rainbow animation for borders
+local colors = {
+    Color3.fromRGB(255,0,0),
+    Color3.fromRGB(255,127,0),
+    Color3.fromRGB(255,255,0),
+    Color3.fromRGB(0,255,0),
+    Color3.fromRGB(0,0,255),
+    Color3.fromRGB(75,0,130),
+    Color3.fromRGB(148,0,211)
+}
+
+spawn(function()
+    local index = 1
+    while frame.Parent do
+        for _, side in pairs(sides) do
+            local tween = TweenService:Create(side, TweenInfo.new(0.5), {BackgroundColor3 = colors[index]})
+            tween:Play()
+        end
+        index = index + 1
+        if index > #colors then index = 1 end
+        wait(0.5)
+    end
+end)
+
+-- Smooth draggable logic
+local dragging = false
+local dragInput, dragStart, startPos
+
+frame.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        dragging = true
+        dragStart = input.Position
+        startPos = frame.Position
+        input.Changed:Connect(function()
+            if input.UserInputState == Enum.UserInputState.End then
+                dragging = false
+            end
+        end)
+    end
+end)
+
+frame.InputChanged:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseMovement then
+        dragInput = input
+    end
+end)
+
+game:GetService("UserInputService").InputChanged:Connect(function(input)
+    if input == dragInput and dragging then
+        local delta = input.Position - dragStart
+        local goal = {}
+        goal.Position = UDim2.new(
+            startPos.X.Scale,
+            startPos.X.Offset + delta.X,
+            startPos.Y.Scale,
+            startPos.Y.Offset + delta.Y
+        )
+        TweenService:Create(frame, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), goal):Play()
+    end
+end)
