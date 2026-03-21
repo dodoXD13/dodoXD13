@@ -327,64 +327,64 @@ ToggleCircle.Text = "D"
 ToggleCircle.TextColor3 = Color3.fromRGB(255, 255, 255)
 ToggleCircle.TextScaled = true
 ToggleCircle.Font = Enum.Font.GothamBold
+
 local CircleCorner = Instance.new("UICorner")
 CircleCorner.CornerRadius = UDim.new(0.5, 0)
 CircleCorner.Parent = ToggleCircle
+
 local CircleStroke = Instance.new("UIStroke")
 CircleStroke.Thickness = 5
 CircleStroke.Parent = ToggleCircle
-local menuOpen = false
-local draggingCircle = false
-local dragStartCircle, startPosCircle
-local moved = false
+
 local UserInputService = game:GetService("UserInputService")
-local RunService = game:GetService("RunService")
-local function getInputPosition(input)
-    if input.UserInputType == Enum.UserInputType.Touch then
-        return input.Position
-    else
-        return UserInputService:GetMouseLocation()
-    end
-end
+
+local menuOpen = false
+local dragging = false
+local dragStart
+local startPos
+local moved = false
+
 ToggleCircle.InputBegan:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-        draggingCircle = true
-        moved = false
-        dragStartCircle = getInputPosition(input)
-        startPosCircle = ToggleCircle.Position
-    end
+	if input.UserInputType == Enum.UserInputType.MouseButton1 
+	or input.UserInputType == Enum.UserInputType.Touch then
+		
+		dragging = true
+		moved = false
+		dragStart = input.Position
+		startPos = ToggleCircle.Position
+	end
 end)
+
 ToggleCircle.InputEnded:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-        draggingCircle = false
-        -- Only toggle if it was not dragged
-        if not moved then
-            menuOpen = not menuOpen
-            MainFrame.Visible = menuOpen
-        end
-    end
+	if input.UserInputType == Enum.UserInputType.MouseButton1 
+	or input.UserInputType == Enum.UserInputType.Touch then
+		
+		dragging = false
+		
+		if not moved then
+			menuOpen = not menuOpen
+			MainFrame.Visible = menuOpen
+		end
+	end
 end)
-RunService.RenderStepped:Connect(function()
-    if draggingCircle then
-        local mousePos = UserInputService:GetMouseLocation()
-        -- For mobile, check the first touch if available
-        if UserInputService.TouchEnabled and #UserInputService:GetTouches() > 0 then
-            mousePos = UserInputService:GetTouches()[1].Position
-        end
-        local delta = mousePos - dragStartCircle
-        if delta.Magnitude > 5 then
-            moved = true
-        end
-        ToggleCircle.Position = ToggleCircle.Position:Lerp(
-            UDim2.new(
-                startPosCircle.X.Scale,
-                startPosCircle.X.Offset + delta.X,
-                startPosCircle.Y.Scale,
-                startPosCircle.Y.Offset + delta.Y
-            ),
-            0.25
-        )
-    end
+
+UserInputService.InputChanged:Connect(function(input)
+	if dragging and (input.UserInputType == Enum.UserInputType.MouseMovement 
+	or input.UserInputType == Enum.UserInputType.Touch) then
+		
+		local delta = input.Position - dragStart
+		
+		if delta.Magnitude > 5 then
+			moved = true
+		end
+		
+		ToggleCircle.Position = UDim2.new(
+			startPos.X.Scale,
+			startPos.X.Offset + delta.X,
+			startPos.Y.Scale,
+			startPos.Y.Offset + delta.Y
+		)
+	end
 end)
 -- ==================== RAINBOW ====================
 local RunService = game:GetService("RunService")
