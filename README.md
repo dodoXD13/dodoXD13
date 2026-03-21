@@ -656,11 +656,11 @@ end
 
 -- Example updates
 addUpdate("OP FLY added")
-addUpdate("Why are people sending theyr friggin keys here?")
-addUpdate("FREE_dd70ff3dff72fe1e7158545b4a6636e1")
-addUpdate("more updates incoming. imma be adding 1 comment to this")
-addUpdate("hacker_heheeheh if u see this i send friends request")
-addUpdate("bro. i swear i saw Hacker_Heheeheh so many times today in dc ")
+addUpdate("added new super duper cool song send trough dc")
+addUpdate("im gonna add more things to this")
+addUpdate("")
+addUpdate("")
+addUpdate("")
 -- Close Button (bigger & cooler)
 local closeButton = Instance.new("TextButton")
 closeButton.Size = UDim2.new(0, 140, 0, 50)
