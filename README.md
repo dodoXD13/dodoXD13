@@ -88,8 +88,58 @@ MainFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 MainFrame.Size = UDim2.new(0, 340, 0, 520)
 MainFrame.Position = UDim2.new(0.5, -170, 0.5, -260)
 MainFrame.Active = true
-MainFrame.Draggable = true
 MainFrame.Visible = false
+
+local TweenService = game:GetService("TweenService")
+local UserInputService = game:GetService("UserInputService")
+
+local dragging = false
+local dragInput, dragStart, startPos
+
+MainFrame.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        dragging = true
+        dragStart = input.Position
+        startPos = MainFrame.Position
+
+        input.Changed:Connect(function()
+            if input.UserInputState == Enum.UserInputState.End then
+                dragging = false
+            end
+        end)
+    end
+end)
+
+MainFrame.InputChanged:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseMovement then
+        dragInput = input
+    end
+end)
+
+local RunService = game:GetService("RunService")
+
+local targetPos = MainFrame.Position
+
+UserInputService.InputChanged:Connect(function(input)
+    if input == dragInput and dragging then
+        local delta = input.Position - dragStart
+
+        targetPos = UDim2.new(
+            startPos.X.Scale,
+            startPos.X.Offset + delta.X,
+            startPos.Y.Scale,
+            startPos.Y.Offset + delta.Y
+        )
+    end
+end)
+
+RunService.RenderStepped:Connect(function()
+    MainFrame.Position = MainFrame.Position:Lerp(targetPos, 0.2)
+end)
+
+RunService.RenderStepped:Connect(function()
+    MainFrame.Position = MainFrame.Position:Lerp(targetPos, 0.2)
+end)
 
 local FrameCorner = Instance.new("UICorner")
 FrameCorner.CornerRadius = UDim.new(0, 12)
@@ -325,7 +375,6 @@ ToggleCircle.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 ToggleCircle.Size = UDim2.new(0, 70, 0, 70)
 ToggleCircle.Position = UDim2.new(0.5, -380, 0.5, -35)
 ToggleCircle.Active = true
-ToggleCircle.Draggable = true
 ToggleCircle.Text = "D"
 ToggleCircle.TextColor3 = Color3.fromRGB(255, 255, 255)
 ToggleCircle.TextScaled = true
@@ -340,9 +389,54 @@ CircleStroke.Thickness = 5
 CircleStroke.Parent = ToggleCircle
 
 local menuOpen = false
-ToggleCircle.MouseButton1Click:Connect(function()
-    menuOpen = not menuOpen
-    MainFrame.Visible = menuOpen
+local draggingCircle = false
+local dragStartCircle, startPosCircle
+local moved = false
+
+local UserInputService = game:GetService("UserInputService")
+local RunService = game:GetService("RunService")
+
+ToggleCircle.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        draggingCircle = true
+        moved = false
+        dragStartCircle = UserInputService:GetMouseLocation()
+        startPosCircle = ToggleCircle.Position
+    end
+end)
+
+ToggleCircle.InputEnded:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        draggingCircle = false
+
+        -- Only toggle if it was not dragged
+        if not moved then
+            menuOpen = not menuOpen
+            MainFrame.Visible = menuOpen
+        end
+    end
+end)
+
+-- Smooth global drag update
+RunService.RenderStepped:Connect(function()
+    if draggingCircle then
+        local mousePos = UserInputService:GetMouseLocation()
+        local delta = mousePos - dragStartCircle
+
+        if delta.Magnitude > 5 then
+            moved = true
+        end
+
+        ToggleCircle.Position = ToggleCircle.Position:Lerp(
+            UDim2.new(
+                startPosCircle.X.Scale,
+                startPosCircle.X.Offset + delta.X,
+                startPosCircle.Y.Scale,
+                startPosCircle.Y.Offset + delta.Y
+            ),
+            0.25
+        )
+    end
 end)
 
 -- ==================== RAINBOW ====================
@@ -657,8 +751,8 @@ end
 -- Example updates
 addUpdate("OP FLY added")
 addUpdate("added new super duper cool song send trough dc")
-addUpdate("im gonna add more things to this")
-addUpdate("")
+addUpdate("added so menu doesnt open/close upon drag")
+addUpdate("added smoothness to menu and pop up circle")
 addUpdate("")
 addUpdate("")
 -- Close Button (bigger & cooler)
