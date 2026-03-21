@@ -12,31 +12,55 @@ RE:WaitForChild("1RPNam1eColo1r"):FireServer("PickingRPNameColor", nameColor)
 task.wait(1)
 
 RE:WaitForChild("1RPNam1eTex1t"):FireServer("RolePlayName", yourName)
+--==================play song========================
+local SOUND_ID = "rbxassetid://82696338249251"
+local PLAY_DURATION = 20
+local START_TIME = 14
+local FADE_TIME = 3 -- how long the fade-out lasts (seconds)
 
--- ==================== CONFIG ====================
-local SOUND_ID = "rbxassetid://17594884733"
-local PLAY_DURATION = 7
-
--- ==================== SOUND SETUP ====================
 local sound = Instance.new("Sound")
 sound.SoundId = SOUND_ID
 sound.Volume = 1
 sound.Looped = false
 sound.Parent = game:GetService("SoundService")
 
+local function fadeOut(sound, duration)
+    local startVolume = sound.Volume
+    local steps = 20
+    local stepTime = duration / steps
+
+    for i = 1, steps do
+        if sound.IsPlaying then
+            sound.Volume = startVolume * (1 - i / steps)
+            task.wait(stepTime)
+        end
+    end
+
+    sound:Stop()
+    sound.Volume = startVolume -- reset for next time
+end
+
 local function playAndStopSound()
     if not sound.SoundId or sound.SoundId == "" then
         warn("No valid SoundId set.")
         return
     end
+
+    sound.TimePosition = START_TIME
     sound:Play()
+
     print("script_DODO_working")
-    task.wait(PLAY_DURATION)
+
+    -- wait until it's time to fade out
+    task.wait(PLAY_DURATION - FADE_TIME)
+
     if sound.IsPlaying then
-        sound:Stop()
-        print("Sound stopped after " .. PLAY_DURATION .. " seconds.")
+        fadeOut(sound, FADE_TIME)
+        print("Sound faded out and stopped.")
     end
 end
+
+playAndStopSound()
 
 -- ==================== CHAT ====================
 local function sendChatMessage(msg)
