@@ -396,17 +396,25 @@ local moved = false
 local UserInputService = game:GetService("UserInputService")
 local RunService = game:GetService("RunService")
 
+local function getInputPosition(input)
+    if input.UserInputType == Enum.UserInputType.Touch then
+        return input.Position
+    else
+        return UserInputService:GetMouseLocation()
+    end
+end
+
 ToggleCircle.InputBegan:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+    if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
         draggingCircle = true
         moved = false
-        dragStartCircle = UserInputService:GetMouseLocation()
+        dragStartCircle = getInputPosition(input)
         startPosCircle = ToggleCircle.Position
     end
 end)
 
 ToggleCircle.InputEnded:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+    if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
         draggingCircle = false
 
         -- Only toggle if it was not dragged
@@ -417,12 +425,15 @@ ToggleCircle.InputEnded:Connect(function(input)
     end
 end)
 
--- Smooth global drag update
 RunService.RenderStepped:Connect(function()
     if draggingCircle then
         local mousePos = UserInputService:GetMouseLocation()
-        local delta = mousePos - dragStartCircle
+        -- For mobile, check the first touch if available
+        if UserInputService.TouchEnabled and #UserInputService:GetTouches() > 0 then
+            mousePos = UserInputService:GetTouches()[1].Position
+        end
 
+        local delta = mousePos - dragStartCircle
         if delta.Magnitude > 5 then
             moved = true
         end
