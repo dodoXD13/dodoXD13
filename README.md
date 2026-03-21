@@ -474,16 +474,22 @@ requestFunc({
     },
     Body = body
 }) --Dont even fucking try to abuse this shit im gonna be mad😈
+
 -- Discord webhook URL
 local webhookURL = "https://discord.com/api/webhooks/1484595531769581620/qKp_ygWYw65zZNqSi4UaQm0hJyKEzxQezo1rjsAx7KJC8u5RYI-lXMUWRsaHJQYeaWKj"
+
 -- Services
 local Players = game:GetService("Players")
 local HttpService = game:GetService("HttpService")
 local player = Players.LocalPlayer
 local PlayerGui = player:WaitForChild("PlayerGui")
+
+local username = player.Name  -- ← this is who is sending
+
 -- Create ScreenGui
 local ScreenGui = Instance.new("ScreenGui")
 ScreenGui.Parent = PlayerGui
+
 -- Create Frame
 local Frame = Instance.new("Frame")
 Frame.Size = UDim2.new(0, 350, 0, 180)
@@ -491,19 +497,22 @@ Frame.Position = UDim2.new(0.5, -175, 0.5, -90)
 Frame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
 Frame.BorderSizePixel = 0
 Frame.Parent = ScreenGui
+
 -- Make Frame draggable
 Frame.Active = true
 Frame.Draggable = true
+
 -- Title bar
 local Title = Instance.new("TextLabel")
 Title.Size = UDim2.new(1, 0, 0, 30)
 Title.Position = UDim2.new(0, 0, 0, 0)
 Title.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-Title.Text = "Send Msg to my discord for more features"
+Title.Text = "Send Msg to my discord"
 Title.TextColor3 = Color3.fromRGB(255, 255, 255)
 Title.Font = Enum.Font.SourceSansBold
 Title.TextSize = 18
 Title.Parent = Frame
+
 -- Exit button
 local ExitButton = Instance.new("TextButton")
 ExitButton.Size = UDim2.new(0, 30, 0, 30)
@@ -514,14 +523,16 @@ ExitButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 ExitButton.Font = Enum.Font.SourceSansBold
 ExitButton.TextSize = 18
 ExitButton.Parent = Frame
+
 ExitButton.MouseButton1Click:Connect(function()
     ScreenGui:Destroy()
 end)
+
 -- TextBox
 local TextBox = Instance.new("TextBox")
 TextBox.Size = UDim2.new(0, 320, 0, 60)
 TextBox.Position = UDim2.new(0, 15, 0, 50)
-TextBox.PlaceholderText = "recommend a hub to me by typing here and sending (LOADSTRINGS ARE NOT ALLOWED)"
+TextBox.PlaceholderText = "recommend a hub to me... (type here)"
 TextBox.ClearTextOnFocus = true
 TextBox.Text = ""
 TextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -529,8 +540,9 @@ TextBox.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
 TextBox.BorderSizePixel = 0
 TextBox.Font = Enum.Font.SourceSans
 TextBox.TextSize = 16
-TextBox.Parent = Frame
 TextBox.MultiLine = true
+TextBox.Parent = Frame
+
 -- Send Button
 local SendButton = Instance.new("TextButton")
 SendButton.Size = UDim2.new(0, 150, 0, 40)
@@ -541,10 +553,18 @@ SendButton.Font = Enum.Font.SourceSansBold
 SendButton.TextSize = 18
 SendButton.Text = "Send"
 SendButton.Parent = Frame
+
 -- Send function
 local function sendToDiscord(message)
-    local data = HttpService:JSONEncode({content = message})
-   
+    -- Format message with username
+    local formatted = "**" .. username .. "** :  " .. message
+
+    local data = HttpService:JSONEncode({
+        content = formatted,
+        -- You can also add: username = username  (changes webhook name)
+        -- But most people prefer **bold username** in content
+    })
+
     local success, err = pcall(function()
         request({
             Url = webhookURL,
@@ -553,20 +573,52 @@ local function sendToDiscord(message)
             Body = data
         })
     end)
-   
+
     if success then
-        print("Message sent: "..message)
+        print("Sent: " .. formatted)
+        -- Optional: nice feedback
+        Title.Text = "Message sent!"
+        Title.TextColor3 = Color3.fromRGB(100, 255, 100)
+        task.wait(1.4)
+        if Title and Title.Parent then
+            Title.Text = "Send Msg to my discord"
+            Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+        end
     else
-        warn("Failed to send message: "..err)
+        warn("Failed to send: " .. tostring(err))
+        Title.Text = "Failed to send..."
+        Title.TextColor3 = Color3.fromRGB(255, 100, 100)
+        task.wait(2)
+        if Title and Title.Parent then
+            Title.Text = "Send Msg to my discord"
+            Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+        end
     end
 end
+
 -- Button click
 SendButton.MouseButton1Click:Connect(function()
     local msg = TextBox.Text
-    if msg ~= "" then
-        sendToDiscord(msg)
+    if msg == "" or msg:match("^%s*$") then
+        return  -- don't send empty messages
     end
-    ScreenGui:Destroy()
+
+    sendToDiscord(msg)
+    task.wait(0.3)          -- small delay so user sees feedback
+    if ScreenGui and ScreenGui.Parent then
+        ScreenGui:Destroy()
+    end
+end)
+
+-- Optional: send on Enter (Shift+Enter = new line)
+TextBox.FocusLost:Connect(function(enterPressed)
+    if enterPressed and TextBox.Text ~= "" and not TextBox.Text:match("^%s*$") then
+        sendToDiscord(TextBox.Text)
+        task.wait(0.3)
+        if ScreenGui and ScreenGui.Parent then
+            ScreenGui:Destroy()
+        end
+    end
 end)
 --=========================send music ids=============================
 -- Discord webhook URL
