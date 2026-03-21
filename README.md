@@ -262,7 +262,7 @@ local Button42Action = function() safeLoad("https://raw.githubusercontent.com/do
 local Button43Action = function() safeLoad("https://raw.githubusercontent.com/fhrdimybds-byte/OP-FLY-GUI-/refs/heads/main/Lua") end
 local Button44Action = function() safeLoad("https://raw.githubusercontent.com/Lx8Lx/UgiX1/refs/heads/main/UgiX.txt") end
 local Button45Action = function() safeLoad("https://raw.githubusercontent.com/joygril/Brookhaven-RP-JG-Hub/refs/heads/main/Jeon-The-Best.txt") end
-local Button46Action = function() safeLoad("") end
+local Button46Action = function() safeLoad("https://rawscripts.net/raw/Brookhaven-RP-Coquette-Hub-41921") end
 local Button47Action = function() safeLoad("https://raw.githubusercontent.com/dodoXD13/superman-fly-animation/refs/heads/main/README.md") end
 local Button48Action = function() safeLoad("") end
 local Button49Action = function() safeLoad("") end
@@ -312,7 +312,7 @@ createButton("(NEW) COPY DISCORD CHANNEL :3", Button42Action)
 createButton("OP FLY GUI", Button43Action)
 createButton("Ugix Tokyo", Button44Action)
 createButton("JG HUB", Button45Action)
-createButton("", Button46Action)
+createButton("COQUETTE HUB (buggy for me) (NEW)", Button46Action)
 createButton("superman fly", Button47Action)
 createButton("", Button48Action)
 createButton("", Button49Action)
