@@ -264,7 +264,7 @@ local Button44Action = function() safeLoad("https://raw.githubusercontent.com/Lx
 local Button45Action = function() safeLoad("https://raw.githubusercontent.com/joygril/Brookhaven-RP-JG-Hub/refs/heads/main/Jeon-The-Best.txt") end
 local Button46Action = function() safeLoad("https://rawscripts.net/raw/Brookhaven-RP-Coquette-Hub-41921") end
 local Button47Action = function() safeLoad("https://raw.githubusercontent.com/dodoXD13/superman-fly-animation/refs/heads/main/README.md") end
-local Button48Action = function() safeLoad("") end
+local Button48Action = function() safeLoad("https://raw.githubusercontent.com/hassanxzayn-lua/Anti-afk/main/antiafkbyhassanxzyn") end
 local Button49Action = function() safeLoad("") end
 -- ==================== CREATE BUTTONS ====================
 createButton("DoDoS Chat (NEW)", Button1Action)
@@ -313,8 +313,8 @@ createButton("OP FLY GUI", Button43Action)
 createButton("Ugix Tokyo", Button44Action)
 createButton("JG HUB", Button45Action)
 createButton("COQUETTE HUB (buggy for me) (NEW)", Button46Action)
-createButton("superman fly", Button47Action)
-createButton("", Button48Action)
+createButton("superman fly PC", Button47Action)
+createButton("anti afk + info", Button48Action)
 createButton("", Button49Action)
 -- ==================== TOGGLE ====================
 local ToggleCircle = Instance.new("TextButton")
@@ -507,7 +507,7 @@ local Title = Instance.new("TextLabel")
 Title.Size = UDim2.new(1, 0, 0, 30)
 Title.Position = UDim2.new(0, 0, 0, 0)
 Title.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-Title.Text = "Send Msg to my discord"
+Title.Text = "Report Buggs Here"
 Title.TextColor3 = Color3.fromRGB(255, 255, 255)
 Title.Font = Enum.Font.SourceSansBold
 Title.TextSize = 18
@@ -590,7 +590,7 @@ local function sendToDiscord(message)
         Title.TextColor3 = Color3.fromRGB(255, 100, 100)
         task.wait(2)
         if Title and Title.Parent then
-            Title.Text = "Send Msg to my discord"
+            Title.Text = "Any Buggs?"
             Title.TextColor3 = Color3.fromRGB(255, 255, 255)
         end
     end
