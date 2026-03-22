@@ -265,7 +265,8 @@ local Button45Action = function() safeLoad("https://raw.githubusercontent.com/jo
 local Button46Action = function() safeLoad("https://rawscripts.net/raw/Brookhaven-RP-Coquette-Hub-41921") end
 local Button47Action = function() safeLoad("https://raw.githubusercontent.com/dodoXD13/superman-fly-animation/refs/heads/main/README.md") end
 local Button48Action = function() safeLoad("https://raw.githubusercontent.com/hassanxzayn-lua/Anti-afk/main/antiafkbyhassanxzyn") end
-local Button49Action = function() safeLoad("") end
+local Button49Action = function() safeLoad("https://raw.githubusercontent.com/dodoXD13/anti-afk-/refs/heads/main/README.md") end --Bunny B/Hop*
+local Button50Action = function() safeLoad("https://raw.githubusercontent.com/dodoXD13/INFO/refs/heads/main/README.md") end
 -- ==================== CREATE BUTTONS ====================
 createButton("DoDoS Chat (NEW)", Button1Action)
 createButton("SANDER X", Button2Action)
@@ -315,7 +316,8 @@ createButton("JG HUB", Button45Action)
 createButton("COQUETTE HUB (buggy for me) (NEW)", Button46Action)
 createButton("superman fly PC", Button47Action)
 createButton("anti afk + info", Button48Action)
-createButton("", Button49Action)
+createButton("Bunny B/Hop", Button49Action)
+createButton("Server Info", Button50Action)
 -- ==================== TOGGLE ====================
 local ToggleCircle = Instance.new("TextButton")
 ToggleCircle.Parent = ScreenGui
