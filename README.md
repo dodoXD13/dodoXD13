@@ -1,3 +1,201 @@
+-- Services
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+
+local player = Players.LocalPlayer
+local PlayerGui = player:WaitForChild("PlayerGui")
+
+-- Remove old loading screen if exists
+if PlayerGui:FindFirstChild("LoadingScreen") then
+	PlayerGui.LoadingScreen:Destroy()
+end
+
+-- ScreenGui
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "LoadingScreen"
+screenGui.IgnoreGuiInset = true
+screenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+screenGui.Parent = PlayerGui
+
+-- Fullscreen black background
+local background = Instance.new("Frame")
+background.Size = UDim2.fromScale(1,1)
+background.Position = UDim2.fromScale(0,0)
+background.BackgroundColor3 = Color3.new(0,0,0)
+background.BorderSizePixel = 0
+background.Parent = screenGui
+
+-- Centered title text
+local titleLabel = Instance.new("TextLabel")
+titleLabel.Size = UDim2.fromScale(0.4, 0.1)
+titleLabel.Position = UDim2.fromScale(0.3,0.4)
+titleLabel.BackgroundTransparency = 1
+titleLabel.Text = "『ＳｃＲｉＰｔ_ＤｏＤｏ』"
+titleLabel.TextColor3 = Color3.new(1,1,1)
+titleLabel.TextScaled = true
+titleLabel.Font = Enum.Font.GothamBold
+titleLabel.Parent = background
+
+-- Glowing gradient for title
+local titleGradient = Instance.new("UIGradient")
+titleGradient.Color = ColorSequence.new{
+	ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 255, 255)),
+	ColorSequenceKeypoint.new(0.5, Color3.fromRGB(255, 0, 255)),
+	ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 255, 255))
+}
+titleGradient.Rotation = 0
+titleGradient.Parent = titleLabel
+
+-- Animate gradient rotation for glowing effect
+spawn(function()
+	while titleLabel.Parent do
+		titleGradient.Rotation = (titleGradient.Rotation + 1) % 360
+		task.wait(0.01)
+	end
+end)
+
+-- Progress bar background
+local barBack = Instance.new("Frame")
+barBack.Size = UDim2.fromScale(0.5,0.02)
+barBack.Position = UDim2.fromScale(0.25,0.88)
+barBack.BackgroundColor3 = Color3.fromRGB(50,50,50)
+barBack.BorderSizePixel = 0
+barBack.Parent = background
+
+local barBackCorner = Instance.new("UICorner")
+barBackCorner.CornerRadius = UDim.new(1,0)
+barBackCorner.Parent = barBack
+
+-- Progress bar fill
+local barFill = Instance.new("Frame")
+barFill.Size = UDim2.fromScale(0,1)
+barFill.BackgroundColor3 = Color3.fromRGB(255,255,255)
+barFill.BorderSizePixel = 0
+barFill.Parent = barBack
+
+local barFillCorner = Instance.new("UICorner")
+barFillCorner.CornerRadius = UDim.new(1,0)
+barFillCorner.Parent = barFill
+
+local barGradient = Instance.new("UIGradient")
+barGradient.Color = ColorSequence.new({
+	ColorSequenceKeypoint.new(0, Color3.fromRGB(255,0,0)),
+	ColorSequenceKeypoint.new(0.17, Color3.fromRGB(255,128,0)),
+	ColorSequenceKeypoint.new(0.33, Color3.fromRGB(255,255,0)),
+	ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0,255,0)),
+	ColorSequenceKeypoint.new(0.67, Color3.fromRGB(0,255,255)),
+	ColorSequenceKeypoint.new(0.83, Color3.fromRGB(0,0,255)),
+	ColorSequenceKeypoint.new(1, Color3.fromRGB(255,0,255)),
+})
+barGradient.Parent = barFill
+
+-- Percentage text
+local pct = Instance.new("TextLabel")
+pct.Size = UDim2.fromScale(0.2,0.04)
+pct.Position = UDim2.fromScale(0.4,0.84)
+pct.BackgroundTransparency = 1
+pct.TextColor3 = Color3.new(1,1,1)
+pct.TextScaled = true
+pct.Font = Enum.Font.GothamBold
+pct.Text = "0%"
+pct.Parent = background
+
+-- Glowing gradient for percentage
+local pctGradient = Instance.new("UIGradient")
+pctGradient.Color = ColorSequence.new{
+	ColorSequenceKeypoint.new(0, Color3.fromRGB(255,255,0)),
+	ColorSequenceKeypoint.new(0.5, Color3.fromRGB(255,0,0)),
+	ColorSequenceKeypoint.new(1, Color3.fromRGB(255,255,0))
+}
+pctGradient.Rotation = 0
+pctGradient.Parent = pct
+
+-- Animate gradient rotation for percentage text
+spawn(function()
+	while pct.Parent do
+		pctGradient.Rotation = (pctGradient.Rotation + 2) % 360
+		task.wait(0.01)
+	end
+end)
+
+-- Particle container
+local particleLayer = Instance.new("Frame")
+particleLayer.Size = UDim2.fromScale(1,1)
+particleLayer.BackgroundTransparency = 1
+particleLayer.BorderSizePixel = 0
+particleLayer.Parent = background
+
+-- Create particles
+local particleCount = 1200
+local particles = {}
+
+for i = 1, particleCount do
+	local part = Instance.new("Frame")
+	local size = math.random(1,2)
+	part.Size = UDim2.fromOffset(size,size)
+	part.Position = UDim2.fromScale(math.random(), math.random())
+	part.BackgroundColor3 = Color3.fromHSV(math.random(),1,1)
+	part.BorderSizePixel = 0
+	part.BackgroundTransparency = 0
+	part.Parent = particleLayer
+
+	particles[i] = {
+		ui = part,
+		x = part.Position.X.Scale,
+		y = part.Position.Y.Scale,
+		speed = math.random() * 0.002 + 0.0015
+	}
+end
+
+-- Fade out function
+local function fadeOut(gui, time)
+	local step = 0
+	local fadeConn
+	fadeConn = RunService.RenderStepped:Connect(function(dt)
+		step += dt/time
+		gui.BackgroundTransparency = math.clamp(step,0,1)
+		if step >= 1 then
+			fadeConn:Disconnect()
+			gui:Destroy()
+		end
+	end)
+end
+
+-- Animate particles and progress
+local loadingTime = 20
+local elapsed = 0
+local progress = 0
+
+local conn
+conn = RunService.RenderStepped:Connect(function(dt)
+	elapsed += dt
+	local target = math.clamp(elapsed/loadingTime, 0, 1)
+
+	-- Smooth progress bar
+	progress += (target - progress) * math.clamp(dt*10,0,1)
+	barFill.Size = UDim2.fromScale(progress,1)
+	pct.Text = tostring(math.floor(progress*100+0.5)) .. "%"
+
+	-- Move particles straight down
+	for _, p in ipairs(particles) do
+		p.y += p.speed * dt * 60
+		if p.y > 1 then
+			p.y = -0.02
+			p.x = math.random()
+			p.speed = math.random() * 0.002 + 0.0015
+			p.ui.BackgroundColor3 = Color3.fromHSV(math.random(),1,1)
+		end
+		p.ui.Position = UDim2.fromScale(p.x,p.y)
+	end
+
+	-- End loading
+	if target >= 1 then
+		conn:Disconnect()
+		task.wait(0.2)
+		fadeOut(background, 0.5)
+	end
+end)
+
 local RE = game:GetService("ReplicatedStorage"):WaitForChild("RE")
 -- ================== CHANGE THESE ==================
 local yourName = "『ＳｃＲｉＰｔ_ＤｏＤｏ』"
@@ -267,6 +465,7 @@ local Button47Action = function() safeLoad("https://raw.githubusercontent.com/do
 local Button48Action = function() safeLoad("https://raw.githubusercontent.com/hassanxzayn-lua/Anti-afk/main/antiafkbyhassanxzyn") end
 local Button49Action = function() safeLoad("https://raw.githubusercontent.com/dodoXD13/anti-afk-/refs/heads/main/README.md") end --Bunny B/Hop*
 local Button50Action = function() safeLoad("https://raw.githubusercontent.com/dodoXD13/INFO/refs/heads/main/README.md") end
+local Button51Action = function() safeLoad("https://luastorage.vercel.app/cdn/.WeLoveReverse.txt") end
 -- ==================== CREATE BUTTONS ====================
 createButton("DoDoS Chat (NEW)", Button1Action)
 createButton("SANDER X", Button2Action)
@@ -318,6 +517,7 @@ createButton("superman fly PC", Button47Action)
 createButton("anti afk + info", Button48Action)
 createButton("Bunny B/Hop", Button49Action)
 createButton("Server Info", Button50Action)
+createButton("KitK4t Hub", Button51Action)
 -- ==================== TOGGLE ====================
 local ToggleCircle = Instance.new("TextButton")
 ToggleCircle.Parent = ScreenGui
