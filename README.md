@@ -466,6 +466,8 @@ local Button48Action = function() safeLoad("https://raw.githubusercontent.com/ha
 local Button49Action = function() safeLoad("https://raw.githubusercontent.com/dodoXD13/anti-afk-/refs/heads/main/README.md") end --Bunny B/Hop*
 local Button50Action = function() safeLoad("https://raw.githubusercontent.com/dodoXD13/INFO/refs/heads/main/README.md") end
 local Button51Action = function() safeLoad("https://luastorage.vercel.app/cdn/.WeLoveReverse.txt") end
+local Button52Action = function() safeLoad("https://raw.githubusercontent.com/alsaadidawood205-byte/SPOOKY-HUB-v2-/refs/heads/main/SPOOKI%20HUB%20v2") end
+
 -- ==================== CREATE BUTTONS ====================
 createButton("DoDoS Chat (NEW)", Button1Action)
 createButton("SANDER X", Button2Action)
@@ -518,6 +520,7 @@ createButton("anti afk + info", Button48Action)
 createButton("Bunny B/Hop", Button49Action)
 createButton("Server Info", Button50Action)
 createButton("KitK4t Hub", Button51Action)
+createButton("SPOOKI Hub -mohand-", Button52Action)
 -- ==================== TOGGLE ====================
 local ToggleCircle = Instance.new("TextButton")
 ToggleCircle.Parent = ScreenGui
@@ -1005,9 +1008,10 @@ addUpdate("i will only be making small updates now")
 addUpdate("like time to time, maybe adding a hub")
 addUpdate("fixing small issues")
 addUpdate("or just changing songs or text")
-addUpdate("")
-addUpdate("")
-addUpdate("")
+addUpdate("resheniyam_hello :  fix brookchat plz")
+addUpdate("basically. brookchat wont work. it cant work")
+addUpdate("its impossible to chat with other users")
+addUpdate("trough other servers. sorry")
 -- Close Button (bigger & cooler)
 local closeButton = Instance.new("TextButton")
 closeButton.Size = UDim2.new(0, 140, 0, 50)
