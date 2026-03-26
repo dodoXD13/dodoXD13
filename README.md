@@ -1,7 +1,7 @@
 local RE = game:GetService("ReplicatedStorage"):WaitForChild("RE")
 -- ================== CHANGE THESE ==================
-local yourName = "ScRiPt_DoDo_NoW"
-local nameColor = Color3.fromRGB(255, 0, 0)
+local yourName = "『ＳｃＲｉＰｔ_ＤｏＤｏ』"
+local nameColor = Color3.fromRGB(148, 0, 211)
 -- =================================================
 print("Changing RP Name to: " .. yourName)
 RE:WaitForChild("1RPNam1eColo1r"):FireServer("PickingRPNameColor", nameColor)
@@ -801,13 +801,13 @@ local function addUpdate(text)
     end)
 end
 -- Example updates
-addUpdate("I WILL BE CHANGING THE NAME TO")
-addUpdate("DoDos MuLtiBrookHub")
-addUpdate("DoDos MuLtiBrookHub")
-addUpdate("DoDos MuLtiBrookHub")
-addUpdate("DoDos MuLtiBrookHub")
-addUpdate("DoDos MuLtiBrookHub")
-addUpdate("in a few")
+addUpdate("i will only be making small updates now")
+addUpdate("like time to time, maybe adding a hub")
+addUpdate("fixing small issues")
+addUpdate("or just changing songs or text")
+addUpdate("")
+addUpdate("")
+addUpdate("")
 -- Close Button (bigger & cooler)
 local closeButton = Instance.new("TextButton")
 closeButton.Size = UDim2.new(0, 140, 0, 50)
