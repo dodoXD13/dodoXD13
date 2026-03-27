@@ -197,13 +197,34 @@ conn = RunService.RenderStepped:Connect(function(dt)
 end)
 
 local RE = game:GetService("ReplicatedStorage"):WaitForChild("RE")
--- ================== CHANGE THESE ==================
-local yourName = "『ＳｃＲｉＰｔ_ＤｏＤｏ』"
-local nameColor = Color3.fromRGB(148, 0, 211)
--- =================================================
-print("Changing RP Name to: " .. yourName)
+local player = game.Players.LocalPlayer
+
+-- ===== OWNER USERNAME =====
+local OWNER = "sigmadoner1234"
+
+-- ===== NAMES =====
+local ownerName = "『ＳｃＲｉＰｔ_ＤｏＤｏ _ OWNER』"
+local normalName = "『ＳｃＲｉＰｔ_ＤｏＤｏ』"
+
+-- ===== COLORS =====
+local ownerColor = Color3.fromRGB(148,0,211)
+local normalColor = Color3.fromRGB(148,0,211)
+
+local yourName
+local nameColor
+
+if player.Name == OWNER then
+    -- OWNER NAME
+    yourName = ownerName
+    nameColor = ownerColor
+else
+    -- NORMAL USERS
+    yourName = normalName
+    nameColor = normalColor
+end
+
 RE:WaitForChild("1RPNam1eColo1r"):FireServer("PickingRPNameColor", nameColor)
-task.wait(1)
+task.wait(0.5)
 RE:WaitForChild("1RPNam1eTex1t"):FireServer("RolePlayName", yourName)
 --==================play song========================
 local SOUND_ID = "rbxassetid://82696338249251"
