@@ -488,7 +488,7 @@ local Button49Action = function() safeLoad("https://raw.githubusercontent.com/do
 local Button50Action = function() safeLoad("https://raw.githubusercontent.com/dodoXD13/INFO/refs/heads/main/README.md") end
 local Button51Action = function() safeLoad("https://luastorage.vercel.app/cdn/.WeLoveReverse.txt") end
 local Button52Action = function() safeLoad("https://raw.githubusercontent.com/alsaadidawood205-byte/SPOOKY-HUB-v2-/refs/heads/main/SPOOKI%20HUB%20v2") end
-
+local Button53Action = function() safeLoad("https://raw.githubusercontent.com/Mevtlawo/Brookhaven-Phantom/refs/heads/main/Hub%20lawo") end
 -- ==================== CREATE BUTTONS ====================
 createButton("DoDoS Chat (NEW)", Button1Action)
 createButton("SANDER X", Button2Action)
@@ -542,6 +542,7 @@ createButton("Bunny B/Hop", Button49Action)
 createButton("Server Info", Button50Action)
 createButton("KitK4t Hub", Button51Action)
 createButton("SPOOKI Hub -mohand-", Button52Action)
+createButton("PHANTOM HUB", Button53Action)
 -- ==================== TOGGLE ====================
 local ToggleCircle = Instance.new("TextButton")
 ToggleCircle.Parent = ScreenGui
@@ -645,7 +646,7 @@ UIS.InputBegan:Connect(function(input, gp)
         popup.TextColor3 = Color3.fromRGB(255, 255, 255)
         popup.TextScaled = true
         popup.Font = Enum.Font.GothamBold
-        popup.Text = "fuck all 0f you who are gonna steal my shit. btw if you found this secret youre lucky!" -- your custom text
+        popup.Text = "you have met the owner! (achievements 1/5)" -- your custom text
         local corner = Instance.new("UICorner")
         corner.Parent = popup
         task.delay(3, function()
