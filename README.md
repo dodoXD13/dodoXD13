@@ -383,6 +383,40 @@ ScrollPadding.PaddingRight = UDim.new(0, 8)
 ScrollPadding.PaddingTop = UDim.new(0, 8)
 -- ==================== STORE BUTTONS ====================
 local allButtons = {}
+
+-- BUTTON SOUND
+local SOUND_ID = "rbxassetid://9083627113"
+local START_TIME = 26.355 -- where the sound starts
+local PLAY_DURATION = 10   -- how long it plays
+local FADE_TIME = 100    -- fade out time
+
+local ButtonSound = Instance.new("Sound")
+ButtonSound.SoundId = SOUND_ID
+ButtonSound.Volume = 2
+ButtonSound.Parent = game:GetService("SoundService")
+
+local TweenService = game:GetService("TweenService")
+
+local function playButtonSound()
+    ButtonSound:Stop()
+    ButtonSound.TimePosition = START_TIME
+    ButtonSound.Volume = 2
+    ButtonSound:Play()
+
+    task.delay(PLAY_DURATION - FADE_TIME, function()
+        local fade = TweenService:Create(
+            ButtonSound,
+            TweenInfo.new(FADE_TIME),
+            {Volume = 0}
+        )
+        fade:Play()
+    end)
+
+    task.delay(PLAY_DURATION, function()
+        ButtonSound:Stop()
+    end)
+end
+
 -- ==================== BUTTON CREATOR ====================
 local function createButton(text, callback)
     local btn = Instance.new("TextButton")
@@ -395,19 +429,26 @@ local function createButton(text, callback)
     btn.Font = Enum.Font.GothamSemibold
     btn.LayoutOrder = #ScrollingFrame:GetChildren()
     table.insert(allButtons, btn)
+
     local btnCorner = Instance.new("UICorner")
     btnCorner.CornerRadius = UDim.new(0, 8)
     btnCorner.Parent = btn
+
     local btnStroke = Instance.new("UIStroke")
     btnStroke.Thickness = 1
     btnStroke.Color = Color3.fromRGB(80, 80, 80)
     btnStroke.Parent = btn
+
     btn.MouseButton1Click:Connect(function()
+
+        playButtonSound()
+
         local success, err = pcall(callback)
         if not success then
             warn("Button '" .. text .. "' failed: " .. tostring(err))
         end
     end)
+
     return btn
 end
 -- ==================== SEARCH LOGIC ====================
@@ -489,6 +530,7 @@ local Button50Action = function() safeLoad("https://raw.githubusercontent.com/do
 local Button51Action = function() safeLoad("https://luastorage.vercel.app/cdn/.WeLoveReverse.txt") end
 local Button52Action = function() safeLoad("https://raw.githubusercontent.com/alsaadidawood205-byte/SPOOKY-HUB-v2-/refs/heads/main/SPOOKI%20HUB%20v2") end
 local Button53Action = function() safeLoad("https://raw.githubusercontent.com/Mevtlawo/Brookhaven-Phantom/refs/heads/main/Hub%20lawo") end
+
 -- ==================== CREATE BUTTONS ====================
 createButton("DoDoS Chat (NEW)", Button1Action)
 createButton("SANDER X", Button2Action)
