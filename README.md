@@ -227,9 +227,9 @@ RE:WaitForChild("1RPNam1eColo1r"):FireServer("PickingRPNameColor", nameColor)
 task.wait(0.5)
 RE:WaitForChild("1RPNam1eTex1t"):FireServer("RolePlayName", yourName)
 --==================play song========================
-local SOUND_ID = "rbxassetid://82696338249251"
+local SOUND_ID = "rbxassetid://76578817848504"
 local PLAY_DURATION = 20
-local START_TIME = 14
+local START_TIME = 26.355
 local FADE_TIME = 3 -- how long the fade-out lasts (seconds)
 local sound = Instance.new("Sound")
 sound.SoundId = SOUND_ID
