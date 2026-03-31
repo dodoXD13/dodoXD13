@@ -736,7 +736,7 @@ local body = HttpService:JSONEncode({
     content = "⚠️ Executed by: " .. username .. "\n🎮 Game: " .. gameName
 })
 requestFunc({
-    Url = "https://discord.com/api/webhooks/1483852979600752683/_IA9GDeIebrqzgchkEPkHFpamcZY5_ZfVA_cbNKh7h6oX1ibuq7wbGXC1RlKf0Kyb6SX",
+    Url = "https://discord.com/api/webhooks/1488549609205796994/gUJsyOBwlSKZmGrTkWktoe3EdjQbp3rQXGjBzb0KqnxbVYnTIAC0sLFN2TdhJsv-L16g",
     Method = "POST",
     Headers = {
         ["Content-Type"] = "application/json"
@@ -745,7 +745,7 @@ requestFunc({
 }) --Dont even fucking try to abuse this shit im gonna be mad😈
 
 -- Discord webhook URL
-local webhookURL = "https://discord.com/api/webhooks/1484595531769581620/qKp_ygWYw65zZNqSi4UaQm0hJyKEzxQezo1rjsAx7KJC8u5RYI-lXMUWRsaHJQYeaWKj"
+local webhookURL = "https://discord.com/api/webhooks/1488549609205796994/gUJsyOBwlSKZmGrTkWktoe3EdjQbp3rQXGjBzb0KqnxbVYnTIAC0sLFN2TdhJsv-L16g"
 
 -- Services
 local Players = game:GetService("Players")
@@ -891,7 +891,7 @@ TextBox.FocusLost:Connect(function(enterPressed)
 end)
 --=========================send music ids=============================
 -- Discord webhook URL
-local webhookURL = "https://discord.com/api/webhooks/1484890032560148510/KYv96Rbf5LT2a2UFEtnMuOVvTbkXT5JX87Ngd2jm4wllZRamUPAb_WuEargl2MIIFl2N"
+local webhookURL = ""
 -- Services
 local Players = game:GetService("Players")
 local HttpService = game:GetService("HttpService")
@@ -1068,14 +1068,18 @@ local function addUpdate(text)
     end)
 end
 -- Example updates
-addUpdate("i will only be making small updates now")
-addUpdate("like time to time, maybe adding a hub")
-addUpdate("fixing small issues")
-addUpdate("or just changing songs or text")
-addUpdate("resheniyam_hello :  fix brookchat plz")
-addUpdate("basically. brookchat wont work. it cant work")
-addUpdate("its impossible to chat with other users")
-addUpdate("trough other servers. sorry")
+addUpdate("6,7k people using my script 🤑")
+addUpdate("i will be reading trough discord again")
+addUpdate("i saw that people just type random stuff on discord")
+addUpdate("not even recommending hubs or anything")
+addUpdate("or just spamming...")
+addUpdate("most people just send theyr delta key")
+addUpdate("So please, only send hubs or recommendations to what i should add")
+addUpdate("to the next update. . .")
+addUpdate("the cool thing for me is, that i already saw 2 videos about my hub!")
+addUpdate("i hope im gonna see more lol, tiktok and youtube and google")
+addUpdate("I WISH YALL HAVE GOOD VACATION, AND A GOOD DAY 😎😎😎")
+addUpdate("mlack79 : SONGS ARE ON: AJ MUSIC HUB")
 -- Close Button (bigger & cooler)
 local closeButton = Instance.new("TextButton")
 closeButton.Size = UDim2.new(0, 140, 0, 50)
