@@ -118,6 +118,29 @@ spawn(function()
 	end
 end)
 
+-- Skip button state
+local skipped = false
+local ending = false
+
+-- Skip button
+local skipButton = Instance.new("TextButton")
+skipButton.Size = UDim2.fromScale(0.15,0.05)
+skipButton.Position = UDim2.fromScale(0.425,0.93)
+skipButton.BackgroundColor3 = Color3.fromRGB(30,30,30)
+skipButton.TextColor3 = Color3.new(1,1,1)
+skipButton.TextScaled = true
+skipButton.Font = Enum.Font.GothamBold
+skipButton.Text = "Skip"
+skipButton.Parent = background
+
+local skipCorner = Instance.new("UICorner")
+skipCorner.CornerRadius = UDim.new(0.5,0)
+skipCorner.Parent = skipButton
+
+skipButton.MouseButton1Click:Connect(function()
+	skipped = true
+end)
+
 -- Particle container
 local particleLayer = Instance.new("Frame")
 particleLayer.Size = UDim2.fromScale(1,1)
@@ -148,15 +171,32 @@ for i = 1, particleCount do
 end
 
 -- Fade out function
-local function fadeOut(gui, time)
+local function fadeOut()
+	if ending then
+		return
+	end
+	ending = true
+
 	local step = 0
 	local fadeConn
 	fadeConn = RunService.RenderStepped:Connect(function(dt)
-		step += dt/time
-		gui.BackgroundTransparency = math.clamp(step,0,1)
-		if step >= 1 then
+		step += dt / 0.5
+		local a = math.clamp(step, 0, 1)
+
+		background.BackgroundTransparency = a
+		titleLabel.TextTransparency = a
+		pct.TextTransparency = a
+		barBack.BackgroundTransparency = a
+		barFill.BackgroundTransparency = a
+		skipButton.BackgroundTransparency = a
+
+		for _, p in ipairs(particles) do
+			p.ui.BackgroundTransparency = a
+		end
+
+		if a >= 1 then
 			fadeConn:Disconnect()
-			gui:Destroy()
+			screenGui:Destroy()
 		end
 	end)
 end
@@ -168,6 +208,10 @@ local progress = 0
 
 local conn
 conn = RunService.RenderStepped:Connect(function(dt)
+	if ending then
+		return
+	end
+
 	elapsed += dt
 	local target = math.clamp(elapsed/loadingTime, 0, 1)
 
@@ -189,15 +233,14 @@ conn = RunService.RenderStepped:Connect(function(dt)
 	end
 
 	-- End loading
-	if target >= 1 then
+	if target >= 1 or skipped then
 		conn:Disconnect()
 		task.wait(0.2)
-		fadeOut(background, 0.5)
+		fadeOut()
 	end
 end)
 
 local RE = game:GetService("ReplicatedStorage"):WaitForChild("RE")
-local player = game.Players.LocalPlayer
 
 -- ===== OWNER USERNAME =====
 local OWNER = "sigmadoner1234"
