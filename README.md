@@ -779,7 +779,7 @@ local body = HttpService:JSONEncode({
     content = "⚠️ Executed by: " .. username .. "\n🎮 Game: " .. gameName
 })
 requestFunc({
-    Url = "https://discord.com/api/webhooks/1488549609205796994/gUJsyOBwlSKZmGrTkWktoe3EdjQbp3rQXGjBzb0KqnxbVYnTIAC0sLFN2TdhJsv-L16g",
+    Url = "https://discord.com/api/webhooks/1489603689420423188/GdPn_0KcZzmzBGqUDA6DK0zdjFeFIBJGOpqTKzLlwlXxdD9oKB2WMBNM1csI4HUSU_Ii", --USING MY SCRIPT
     Method = "POST",
     Headers = {
         ["Content-Type"] = "application/json"
@@ -788,7 +788,7 @@ requestFunc({
 }) --Dont even fucking try to abuse this shit im gonna be mad😈
 
 -- Discord webhook URL
-local webhookURL = "https://discord.com/api/webhooks/1488549609205796994/gUJsyOBwlSKZmGrTkWktoe3EdjQbp3rQXGjBzb0KqnxbVYnTIAC0sLFN2TdhJsv-L16g"
+local webhookURL = "https://discord.com/api/webhooks/1488550713385685073/Fx5aZZqbWUL66hhVC3Qxg8nqGu-MM1mXzsR3lAXEN1rRzAgq5NP_OKlrsCtJfKEX0q9-" --QUESTIONS TO ASK
 
 -- Services
 local Players = game:GetService("Players")
